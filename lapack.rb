@@ -12,6 +12,7 @@ class Lapack < Formula
 
     # Copy over make.inc, to load in configuration for this platform
     mv "INSTALL/make.inc.gfortran", "make.inc"
-    system "make", "PREFIX=#{prefix}", "install"
+    system "make", "lib"
+    lib.install "liblapack.a"
   end
 end
