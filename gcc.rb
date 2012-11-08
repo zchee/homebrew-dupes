@@ -80,9 +80,9 @@ class Gcc < Formula
       "--bindir=#{bin}",
       # ...which are tagged with a suffix to distinguish them.
       "--program-suffix=-#{version.to_s.slice(/\d\.\d/)}",
-      "--with-gmp=#{gmp.prefix}",
-      "--with-mpfr=#{mpfr.prefix}",
-      "--with-mpc=#{libmpc.prefix}",
+      "--with-gmp=#{gmp.opt_prefix}",
+      "--with-mpfr=#{mpfr.opt_prefix}",
+      "--with-mpc=#{libmpc.opt_prefix}",
       "--with-system-zlib",
       "--enable-stage1-checking",
       "--enable-plugin",
