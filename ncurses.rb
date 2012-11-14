@@ -15,7 +15,7 @@ class Ncurses < Formula
                           "--prefix=#{prefix}",
                           "--mandir=#{man}",
                           "--with-shared",
-                          "--with-widec",
+                          "--enable-widec",
                           "--with-manpage-format=normal",
                           "--enable-symlinks"
     system "make"
