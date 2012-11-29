@@ -2,9 +2,9 @@ require 'formula'
 
 class Tcl < Formula
   homepage 'http://www.tcl.tk/'
-  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.5.9/tcl8.5.9-src.tar.gz'
-  version '8.5.9'
-  sha1 'ae87c5e58ba20760d9bc77117d219bbf1b6a5557'
+  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.5.13/tcl8.5.13-src.tar.gz'
+  version '8.5.13'
+  sha1 '65b677dc699426233b926edfa9e304d456da7cad'
 
   option 'enable-threads', 'Build with multithreading support'
 
