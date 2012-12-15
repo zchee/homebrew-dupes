@@ -4,23 +4,11 @@ require 'formula'
 # gccgo "is currently known to work on GNU/Linux and RTEMS. Solaris support
 # is in progress. It may or may not work on other platforms."
 
-class Ecj < Formula
-  # Little Known Fact: ecj, Eclipse Java Complier, is required in order to
-  # produce a gcj compiler that can actually parse Java source code.
-  url 'ftp://sourceware.org/pub/java/ecj-4.5.jar'
-  mirror 'http://mirrors.kernel.org/sources.redhat.com/java/ecj-4.5.jar'
-  sha1 '58c1d79c64c8cd718550f32a932ccfde8d1e6449'
-end
-
 class Gcc < Formula
   homepage 'http://gcc.gnu.org'
   url 'http://ftpmirror.gnu.org/gcc/gcc-4.7.2/gcc-4.7.2.tar.bz2'
   mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.7.2/gcc-4.7.2.tar.bz2'
   sha1 'a464ba0f26eef24c29bcd1e7489421117fb9ee35'
-
-  depends_on 'gmp'
-  depends_on 'libmpc'
-  depends_on 'mpfr'
 
   option 'enable-cxx', 'Build the g++ compiler'
   option 'enable-fortran', 'Build the gfortran compiler'
@@ -45,6 +33,11 @@ class Gcc < Formula
       Thanks!
       EOS
   end
+
+  depends_on 'gmp'
+  depends_on 'libmpc'
+  depends_on 'mpfr'
+  depends_on 'ecj' if build.include? 'enable-java' or build.include? 'enable-all-languages'
 
   def install
     # Force 64-bit on systems that use it. Build failures reported for some
@@ -109,14 +102,8 @@ class Gcc < Formula
     end
 
     if build.include? 'enable-java' or build.include? 'enable-all-languages'
-      source_dir = Pathname.new Dir.pwd
-
-      Ecj.new.brew do |ecj|
-        # Copying ecj.jar into the toplevel of the GCC source tree will cause
-        # gcc to automagically package it into the installation. It *must* be
-        # named ecj.jar and not ecj-version.jar in order for this to happen.
-        mv "ecj-#{ecj.version}.jar", (source_dir + 'ecj.jar')
-      end
+      ecj = Formula.factory 'ecj'
+      args << "--with-ecj-jar=#{ecj.opt_prefix}/share/java/ecj.jar"
     end
 
     if build.include? 'enable-multilib'
@@ -147,6 +134,9 @@ class Gcc < Formula
       # deja-gnu and autogen formulae must be installed in order to do this.
 
       system 'make install'
+
+      # Remove conflicting manpages in man7
+      man7.rmtree
     end
   end
 end
