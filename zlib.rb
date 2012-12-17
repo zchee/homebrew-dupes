@@ -7,7 +7,7 @@ class Zlib < Formula
 
   keg_only :provided_by_osx
 
-  def patches; DATA end
+  def patches; DATA; end
 
   def install
     system "./configure", "--prefix=#{prefix}"
