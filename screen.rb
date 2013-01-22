@@ -12,15 +12,25 @@ class Screen < Formula
   depends_on :autoconf
 
   def patches
-    "http://trac.macports.org/raw-attachment/ticket/20862/screen-4.0.3-snowleopard.patch"
-  end unless build.head?
+    if build.head?
+      # This patch is to disable the error message
+      # "/var/run/utmp: No such file or directory" on launch
+      "https://gist.github.com/raw/4608863/75669072f227b82777df25f99ffd9657bd113847/gistfile1.diff"
+    else
+      "http://trac.macports.org/raw-attachment/ticket/20862/screen-4.0.3-snowleopard.patch"
+    end
+  end
 
   def install
     if build.head?
-      cd 'src' do
-        system "autoconf"
-        system "autoheader"
-      end
+      Dir.chdir 'src'
+      system "autoconf"
+      system "autoheader"
+
+      # With parallel build, it fails
+      # because of trying to compile files which depend osdef.h
+      # before osdef.sh script generates it.
+      ENV.deparallelize
     end
 
     system "./configure", "--prefix=#{prefix}",
