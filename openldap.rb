@@ -5,9 +5,7 @@ class Openldap < Formula
   url 'ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.24.tgz'
   sha1 'a4baad3d45ae5810ba5fee48603210697c70d52f'
 
-  depends_on 'berkeley-db' if build.include? "with-berkeley-db"
-
-  option 'with-berkeley-db', 'Compile with Berkeley-DB support'
+  depends_on 'berkeley-db' => :optional
 
   skip_clean 'var/run'
 
@@ -16,8 +14,8 @@ class Openldap < Formula
               --prefix=#{prefix}
               --sysconfdir=#{etc}]
 
-    args << "--enable-bdb=no" unless build.include? "with-berkeley-db"
-    args << "--enable-hdb=no" unless build.include? "with-berkeley-db"
+    args << "--enable-bdb=no" unless build.with? "berkeley-db"
+    args << "--enable-hdb=no" unless build.with? "berkeley-db"
 
     system "./configure", *args
     system "make install"
