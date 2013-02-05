@@ -1,9 +1,9 @@
 require 'formula'
 
 class Libarchive < Formula
-  homepage 'http://libarchive.github.com/'
-  url 'https://github.com/downloads/libarchive/libarchive/libarchive-3.0.4.tar.gz'
-  sha1 '81bf817aa512ad67af583c7a2dab79743e418899'
+  homepage 'http://www.libarchive.org'
+  url 'http://www.libarchive.org/downloads/libarchive-3.1.1.tar.gz'
+  sha1 'ee92567d68f2d7c2489c9c539834efa8a02106df'
 
   def install
     system "./configure", "--prefix=#{prefix}"
