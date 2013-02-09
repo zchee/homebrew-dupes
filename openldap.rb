@@ -7,12 +7,11 @@ class Openldap < Formula
 
   depends_on 'berkeley-db' => :optional
 
-  skip_clean 'var/run'
-
   def install
     args = %W[--disable-dependency-tracking
               --prefix=#{prefix}
-              --sysconfdir=#{etc}]
+              --sysconfdir=#{etc}
+              --localstatedir=#{var}]
 
     args << "--enable-bdb=no" unless build.with? "berkeley-db"
     args << "--enable-hdb=no" unless build.with? "berkeley-db"
