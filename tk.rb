@@ -2,9 +2,9 @@ require 'formula'
 
 class Tk < Formula
   homepage 'http://www.tcl.tk/'
-  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.5.13/tk8.5.13-src.tar.gz'
-  version '8.5.13'
-  sha1 'a7dc1a979201376d7e7d48ec9280839ebb52a09f'
+  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.6.0/tk8.6.0-src.tar.gz'
+  version '8.6.0'
+  sha1 'c42e160285e2d26eae8c2a1e6c6f86db4fa7663b'
 
   # must use a Homebrew-built Tcl since versions must match
   depends_on 'tcl'
@@ -12,11 +12,6 @@ class Tk < Formula
 
   option 'enable-threads', 'Build with multithreading support'
   option 'enable-aqua', 'Build with Aqua support'
-
-  # fix return types (see macports patch)
-  def patches
-    DATA
-  end
 
   def install
     args = ["--prefix=#{prefix}",
@@ -34,7 +29,7 @@ class Tk < Formula
       system "make"
       system "make install"
 
-      ln_s bin+'wish8.5', bin+'wish'
+      ln_s bin+'wish8.6', bin+'wish'
     end
 
     # Awww tk, don't install (outdated) X11 headers!
@@ -44,46 +39,3 @@ class Tk < Formula
     end
   end
 end
-
-__END__
-diff --git a/macosx/tkMacOSXClipboard.c b/macosx/tkMacOSXClipboard.c
-index 7cd9c30..8eedb53 100644
---- a/macosx/tkMacOSXClipboard.c
-+++ b/macosx/tkMacOSXClipboard.c
-@@ -168,6 +168,7 @@ XSetSelectionOwner(
- 	    changeCount = [pb declareTypes:[NSArray array] owner:NSApp];
- 	}
-     }
-+	return Success;
- }
- 
- /*
-@@ -194,7 +195,6 @@ TkMacOSXSelDeadWindow(
-     if (winPtr && winPtr == (TkWindow *)clipboardOwner) {
- 	clipboardOwner = NULL;
-     }
--    return Success;
- }
- 
- /*
-diff --git a/macosx/tkMacOSXDraw.c b/macosx/tkMacOSXDraw.c
-index 4eb4a88..479166e 100644
---- a/macosx/tkMacOSXDraw.c
-+++ b/macosx/tkMacOSXDraw.c
-@@ -347,6 +347,7 @@ TkPutImage(
- 	TkMacOSXDbgMsg("Invalid destination drawable");
-     }
-     TkMacOSXRestoreDrawingContext(&dc);
-+	return Success;
- }
- 
- /*
-@@ -744,7 +745,6 @@ DrawCGImage(
-     } else {
- 	TkMacOSXDbgMsg("Drawing of empty CGImage requested");
-     }
--    return Success;
- }
- 
- /*
-

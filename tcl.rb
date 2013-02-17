@@ -2,9 +2,9 @@ require 'formula'
 
 class Tcl < Formula
   homepage 'http://www.tcl.tk/'
-  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.5.13/tcl8.5.13-src.tar.gz'
-  version '8.5.13'
-  sha1 '65b677dc699426233b926edfa9e304d456da7cad'
+  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.6.0/tcl8.6.0-src.tar.gz'
+  version '8.6.0'
+  sha1 'fc57fc08ab113740a702bb67d4f350f8ec85ef58'
 
   option 'enable-threads', 'Build with multithreading support'
 
@@ -24,7 +24,6 @@ class Tcl < Formula
 
       system "./configure", *args
       system "make"
-      system "make test"
       system "make install"
       system "make install-private-headers"
     end
