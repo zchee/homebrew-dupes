@@ -28,6 +28,7 @@ class Tk < Formula
       system "./configure", *args
       system "make"
       system "make install"
+      system "make install-private-headers"
 
       ln_s bin+'wish8.6', bin+'wish'
     end
