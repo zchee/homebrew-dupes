@@ -19,7 +19,8 @@ class Ncurses < Formula
                           "--with-shared",
                           "--enable-widec",
                           "--with-manpage-format=normal",
-                          "--enable-symlinks"
+                          "--enable-symlinks",
+                          "--without-cxx-binding"
     system "make"
     system "make install"
   end
