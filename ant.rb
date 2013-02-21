@@ -2,7 +2,7 @@ require 'formula'
 
 class Ant < Formula
   homepage 'http://ant.apache.org/'
-  url 'http://www.apache.org/dyn/closer.cgi/ant/binaries/apache-ant-1.8.4-bin.tar.gz'
+  url 'http://www.apache.org/dyn/closer.cgi?path=ant/binaries/apache-ant-1.8.4-bin.tar.gz'
   sha1 'b4a7b2d0dfba23ba970973e4881b5b5634fbdfaf'
 
   def install
