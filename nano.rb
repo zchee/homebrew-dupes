@@ -5,7 +5,7 @@ class Nano < Formula
   url 'http://www.nano-editor.org/dist/v2.2/nano-2.2.6.tar.gz'
   sha1 'f2a628394f8dda1b9f28c7e7b89ccb9a6dbd302a'
 
-  depends_on "s-lang"
+  depends_on "homebrew/dupes/ncurses"
 
   def install
     system "./configure", "--disable-debug",
@@ -17,8 +17,7 @@ class Nano < Formula
                           "--enable-multibuffer",
                           "--enable-nanorc",
                           "--disable-nls",
-                          "--enable-utf8",
-                          "--with-slang=#{HOMEBREW_PREFIX}"
+                          "--enable-utf8"
     system "make install"
   end
 end
