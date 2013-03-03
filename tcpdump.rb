@@ -2,8 +2,8 @@ require 'formula'
 
 class Tcpdump < Formula
   homepage 'http://www.tcpdump.org/'
-  url 'http://www.tcpdump.org/release/tcpdump-4.2.1.tar.gz'
-  sha1 '56e3c86712b3ea7a3423026f4da5465bfcb2c051'
+  url 'http://www.tcpdump.org/release/tcpdump-4.3.0.tar.gz'
+  sha1 '5d0432e4831ca81633a6c9da732caad77d64a9ac'
 
   head 'git://bpf.tcpdump.org/tcpdump'
 
