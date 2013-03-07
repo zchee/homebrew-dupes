@@ -6,6 +6,9 @@ class Awk < Formula
   version '20121220'
   sha1 '538fd69fb0fd01966eb41ad20c336215b4a07301'
 
+  conflicts_with 'gawk',
+    :because => 'both install awk executables.'
+
   def install
     ENV.O3 # Docs recommend higher optimization
     # the yacc command the makefile uses results in build failures:
