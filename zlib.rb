@@ -7,9 +7,12 @@ class Zlib < Formula
 
   keg_only :provided_by_osx
 
+  option :universal
+
   def patches; DATA; end
 
   def install
+    ENV.universal_binary if build.universal?
     system "./configure", "--prefix=#{prefix}"
     system "make install"
   end
