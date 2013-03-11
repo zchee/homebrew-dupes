@@ -10,6 +10,11 @@ class Ncurses < Formula
 
   option :universal
 
+  # Fix building C++ bindings with clang
+  def patches
+    { :p0 => "https://trac.macports.org/export/103963/trunk/dports/devel/ncurses/files/constructor_types.diff" }
+  end
+
   def install
     ENV.universal_binary if build.universal?
 
@@ -19,8 +24,7 @@ class Ncurses < Formula
                           "--with-shared",
                           "--enable-widec",
                           "--with-manpage-format=normal",
-                          "--enable-symlinks",
-                          "--without-cxx-binding"
+                          "--enable-symlinks"
     system "make"
     system "make install"
   end
