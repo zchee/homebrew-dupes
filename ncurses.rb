@@ -6,6 +6,8 @@ class Ncurses < Formula
   mirror 'http://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz'
   sha1 '3e042e5f2c7223bffdaac9646a533b8c758b65b5'
 
+  keg_only :provided_by_osx
+
   option :universal
 
   def install
