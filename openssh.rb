@@ -9,6 +9,8 @@ class Openssh < Formula
   option 'with-brewed-openssl', 'Build with Homebrew OpenSSL instead of the system version'
 
   depends_on 'openssl' if build.with? 'brewed-openssl'
+  depends_on 'ldns' => :optional
+  depends_on 'pkg-config' => :build if build.with? "ldns"
 
   def install
     args = %W[
@@ -17,6 +19,7 @@ class Openssh < Formula
     ]
 
     args << "--with-ssl-dir=#{Formula.factory('openssl').opt_prefix}" if build.with? 'brewed-openssl'
+    args << "--with-ldns" if build.with? "ldns"
 
     system "./configure", *args
     system "make"
