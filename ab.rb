@@ -5,7 +5,8 @@ class Ab < Formula
   url 'http://archive.apache.org/dist/httpd/httpd-2.4.3.tar.bz2'
   sha1 '0ef1281bb758add937efe61c345287be2f27f662'
 
-  depends_on 'libtool'
+  depends_on 'homebrew/dupes/apr' if MacOS.version < :mountain_lion
+  depends_on 'libtool' => :build
 
   def patches
     # Disable requirement for PCRE, because "ab" does not use it
