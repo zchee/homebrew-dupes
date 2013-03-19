@@ -27,5 +27,25 @@ class Ncurses < Formula
                           "--enable-symlinks"
     system "make"
     system "make install"
+    make_libncurses_symlinks
+  end
+
+  def make_libncurses_symlinks
+    major = version.to_s.split(".")[0]
+
+    cd lib do
+      %w{form menu ncurses panel}.each do |name|
+        ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.dylib"
+        ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.#{major}.dylib"
+        ln_s "lib#{name}w.a", "lib#{name}.a"
+        ln_s "lib#{name}w_g.a", "lib#{name}_g.a"
+      end
+
+      ln_s "libncurses++w.a", "libncurses++.a"
+    end
+
+    cd bin do
+      ln_s "ncursesw#{major}-config", "ncurses#{major}-config"
+    end
   end
 end
