@@ -12,6 +12,7 @@ class Httpd < Formula
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
                           "--mandir=#{man}",
+                          "--localstatedir=#{var}",
                           "--enable-layout=GNU",
                           "--enable-mods-shared=all",
                           "--with-ssl=/usr",
@@ -30,6 +31,7 @@ class Httpd < Formula
                           "--enable-rewrite"
     system "make"
     system "make install"
+    %w{log run}.each { |dir| (var/"apache2"/dir).mkpath }
   end
 
   def startup_plist; <<-EOS.undent
