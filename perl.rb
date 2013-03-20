@@ -8,7 +8,6 @@ class Perl < Formula
   option 'use-threads', 'Enable Perl threads'
 
   def install
-    system("rm -f config.sh Policy.sh")
     args = [
         '-des',
         "-Dprefix=#{prefix}",
