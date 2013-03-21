@@ -34,16 +34,16 @@ class Httpd < Formula
     %w{log run}.each { |dir| (var/"apache2"/dir).mkpath }
   end
 
-  def startup_plist; <<-EOS.undent
+  def plist; <<-EOS.undent
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
     <dict>
       <key>Label</key>
-      <string>com.apache.httpd</string>
+      <string>#{plist_name}</string>
       <key>ProgramArguments</key>
       <array>
-        <string>/usr/local/sbin/apachectl</string>
+        <string>#{opt_prefix}/sbin/apachectl</string>
         <string>start</string>
       </array>
       <key>RunAtLoad</key>
