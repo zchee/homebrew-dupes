@@ -2,8 +2,8 @@ require 'formula'
 
 class Lapack < Formula
   homepage 'http://www.netlib.org/lapack/'
-  url 'http://www.netlib.org/lapack/lapack-3.4.0.tgz'
-  sha1 '910109a931524f8dcc2734ce23fe927b00ca199f'
+  url 'http://www.netlib.org/lapack/lapack-3.4.2.tgz'
+  sha1 '93a6e4e6639aaf00571d53a580ddc415416e868b'
 
   keg_only :provided_by_osx
 
