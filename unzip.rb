@@ -9,7 +9,7 @@ class Unzip < Formula
   keg_only :provided_by_osx
 
   def install
-    system "make", "-f", "unix/Makefile macosx"
+    system "make", "-f", "unix/Makefile", "macosx"
     system "make", "prefix=#{prefix}", "MANDIR=#{man}", "install"
   end
 
