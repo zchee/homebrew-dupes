@@ -13,6 +13,7 @@ class Httpd < Formula
                           "--prefix=#{prefix}",
                           "--mandir=#{man}",
                           "--localstatedir=#{var}/apache2",
+                          "--sysconfdir=#{etc}/apache2",
                           "--enable-layout=GNU",
                           "--enable-mods-shared=all",
                           "--with-ssl=/usr",
