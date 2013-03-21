@@ -15,7 +15,7 @@ class Ant < Formula
     end
   end
 
-  def test
-    system "ant -version"
+  test do
+    system "ant", "-version"
   end
 end

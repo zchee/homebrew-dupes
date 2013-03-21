@@ -28,8 +28,8 @@ class Ab < Formula
     man1.install('docs/man/ab.1')
   end
 
-  def test
-    puts `"#{bin}/ab" -k -n 10 -c 10 http://www.apple.com/`
+  test do
+    system *%W{#{bin}/ab -k -n 10 -c 10 http://www.apple.com/}
   end
 end
 

@@ -18,7 +18,7 @@ class Units < Formula
     system "make install"
   end
 
-  def test
+  test do
     system %{[ $("#{bin}/units" '(((square(kiloinch)+2.84m2) /0.5) meters^2)^(1|4)' m | sed -n -e 's/[[:space:]]\\\* //p') = 6 ]}
   end
 end

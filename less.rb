@@ -10,7 +10,7 @@ class Less < Formula
     system "make install"
   end
 
-  def test
+  test do
     system "#{bin}/lesskey"
   end
 end

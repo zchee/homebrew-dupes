@@ -19,7 +19,7 @@ class Whois < Formula
     EOS
   end
 
-  def test
+  test do
     system "#{bin}/whois"
   end
 end

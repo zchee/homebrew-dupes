@@ -13,7 +13,7 @@ class Unzip < Formula
     system "make prefix=#{prefix} MANDIR=#{man} install"
   end
 
-  def test
+  test do
     system "#{bin}/unzip", "--help"
   end
 end

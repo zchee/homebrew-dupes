@@ -16,7 +16,7 @@ class Gzip < Formula
     system "make install"
   end
 
-  def test
+  test do
     system "#{bin}/gzip", "-V"
   end
 end
