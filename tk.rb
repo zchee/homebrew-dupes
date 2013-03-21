@@ -6,27 +6,30 @@ class Tk < Formula
   version '8.6.0'
   sha1 'c42e160285e2d26eae8c2a1e6c6f86db4fa7663b'
 
+  option 'enable-threads', 'Build with multithreading support'
+
   # must use a Homebrew-built Tcl since versions must match
   depends_on 'tcl'
-  depends_on :x11
-
-  option 'enable-threads', 'Build with multithreading support'
-  option 'enable-aqua', 'Build with Aqua support'
+  depends_on :x11 => :optional
 
   def install
     args = ["--prefix=#{prefix}",
             "--mandir=#{man}",
-            "--with-tcl=#{HOMEBREW_PREFIX}/lib"]
+            "--with-tcl=#{Formula.factory('tcl').opt_prefix}/lib"]
     args << "--enable-threads" if build.include? "enable-threads"
-    args << "--enable-aqua" if build.include? "enable-aqua"
     args << "--enable-64bit" if MacOS.prefer_64_bit?
 
-    cd 'unix' do
-      # so we can find the necessary Tcl headers
-      ENV.append 'CFLAGS', "-I#{HOMEBREW_PREFIX}/include"
+    if build.with? "x11"
+      args << "--with-x"
+    else
+      args << "--enable-aqua"
+      args << "--without-x"
+    end
 
+    cd 'unix' do
       system "./configure", *args
-      system "make"
+      system "make", "LIB_RUNTIME_DIR=#{lib}"
+      # system "make test"  # for maintainers
       system "make install"
       system "make install-private-headers"
 
