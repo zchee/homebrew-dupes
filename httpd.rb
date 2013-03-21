@@ -12,7 +12,7 @@ class Httpd < Formula
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
                           "--mandir=#{man}",
-                          "--localstatedir=#{var}",
+                          "--localstatedir=#{var}/apache2",
                           "--enable-layout=GNU",
                           "--enable-mods-shared=all",
                           "--with-ssl=/usr",
