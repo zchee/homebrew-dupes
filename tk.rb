@@ -8,6 +8,8 @@ class Tk < Formula
 
   option 'enable-threads', 'Build with multithreading support'
 
+  keg_only "Tk installs some X11 headers and OS X provides an (older)."
+
   # must use a Homebrew-built Tcl since versions must match
   depends_on 'tcl'
   depends_on :x11 => :optional
