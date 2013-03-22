@@ -38,10 +38,5 @@ class Tk < Formula
       ln_s bin+'wish8.6', bin+'wish'
     end
 
-    # Awww tk, don't install (outdated) X11 headers!
-    # (See http://trac.macports.org/ticket/8730)
-    if build.include? "enable-aqua"
-      rm_rf(include/'X11')
-    end
   end
 end
