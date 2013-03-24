@@ -9,18 +9,32 @@ class Grep < Formula
   depends_on 'xz' => :build
   depends_on 'pcre'
 
+  option 'default-names', "Do not prepend 'g' to the binary"
+
   def install
     # find the correct libpcre
     pcre = Formula.factory('pcre')
     ENV.append 'LDFLAGS', "-L#{pcre.lib} -lpcre"
     ENV.append 'CPPFLAGS', "-I#{pcre.include}"
 
-    system "./configure", "--disable-dependency-tracking",
-                          "--disable-nls",
-                          "--prefix=#{prefix}",
-                          "--infodir=#{info}",
-                          "--mandir=#{man}"
+    args = %W[
+      --disable-dependency-tracking
+      --disable-nls
+      --prefix=#{prefix}
+      --infodir=#{info}
+      --mandir=#{man}
+    ]
+
+    args << "--program-prefix=g" unless build.include? 'default-names'
+
+    system "./configure", *args
     system "make"
     system "make install"
+  end
+
+  def caveats; <<-EOS.undent
+    The command has been installed with the prefix 'g'.
+    If you do not want the prefix, install using the 'default-names' option.
+    EOS
   end
 end
