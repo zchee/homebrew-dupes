@@ -52,7 +52,7 @@ class TclTk < Formula
 
         cd 'unix' do
           system "./configure", *args
-          system "make"#, "LIB_RUNTIME_DIR=#{lib}", "TK_LIBRARY=#{lib}"
+          system "make", "TK_LIBRARY=#{lib}"
           # system "make test"  # for maintainers
           system "make install"
           system "make install-private-headers"
