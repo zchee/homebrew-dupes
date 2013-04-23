@@ -20,6 +20,8 @@ class AppleGcc42 < Formula
   version '4.2.1-5666.3'
   sha1 '8fadde2a159082d6474fe9e325b6301e3c0bc84f'
 
+  option 'with-gfortran-symlink', 'Provide gfortran symlinks'
+
   def install
     unless MacOS.version >= :lion
       onoe <<-EOS.undent
@@ -31,11 +33,10 @@ class AppleGcc42 < Formula
 
     safe_system "pax --insecure -rz -f Payload.gz -s ',./usr,#{prefix},'"
 
-    # Create links for GFortran as this formula is functionally equivalent to
-    # the GFotran formula. The only difference is that the GFortran formula
-    # tosses out the C compilers.
-    safe_system "ln -sf #{bin}/gfortran-4.2 #{bin}/gfortran"
-    safe_system "ln -sf #{man1}/gfortran-4.2.1 #{man1}/gfortran.1"
+    if build.include? 'with-gfortran-symlink'
+      safe_system "ln -sf #{bin}/gfortran-4.2 #{bin}/gfortran"
+      safe_system "ln -sf #{man1}/gfortran-4.2.1 #{man1}/gfortran.1"
+    end
   end
 
   def caveats
