@@ -2,8 +2,8 @@ require 'formula'
 
 class Whois < Formula
   homepage 'http://packages.debian.org/sid/whois'
-  url 'http://ftp.debian.org/debian/pool/main/w/whois/whois_5.0.20.tar.xz'
-  sha1 '0fe1c6b4cc8434bb7f4af1a51bae82868208c50b'
+  url 'http://ftp.debian.org/debian/pool/main/w/whois/whois_5.0.24.tar.xz'
+  sha1 'd76e18262577226e109092b392286b2f9527e71a'
 
   depends_on 'xz' => :build
 
