@@ -15,6 +15,7 @@ class Openssh < Formula
   def install
     args = %W[
       --with-libedit
+      --with-kerberos5
       --prefix=#{prefix}
       --sysconfdir=#{etc}/ssh
     ]
