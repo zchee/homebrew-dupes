@@ -16,6 +16,7 @@ class Openssh < Formula
     args = %W[
       --with-libedit
       --prefix=#{prefix}
+      --sysconfdir=#{etc}/ssh
     ]
 
     args << "--with-ssl-dir=#{Formula.factory('openssl').opt_prefix}" if build.with? 'brewed-openssl'
