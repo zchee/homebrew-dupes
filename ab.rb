@@ -5,7 +5,7 @@ class Ab < Formula
   url 'http://archive.apache.org/dist/httpd/httpd-2.4.3.tar.bz2'
   sha1 '0ef1281bb758add937efe61c345287be2f27f662'
 
-  depends_on 'homebrew/dupes/apr' if MacOS.version < :mountain_lion
+  depends_on 'homebrew/dupes/apr-util' if MacOS.version < :mountain_lion
   depends_on 'libtool' => :build
 
   def patches
@@ -17,7 +17,10 @@ class Ab < Formula
     # Mountain Lion requires this to be set, as otherwise libtool complains
     # about being "unable to infer tagged configuration"
     ENV['LTFLAGS'] = '--tag CC'
-    system "./configure", "--prefix=#{prefix}", "--disable-debug", "--disable-dependency-tracking"
+    system "./configure", "--prefix=#{prefix}", "--disable-debug",
+                          "--disable-dependency-tracking",
+                          "--with-apr=#{Formula.factory('homebrew/dupes/apr').opt_prefix}",
+                          "--with-apr-util=#{Formula.factory('homebrew/dupes/apr-util').opt_prefix}"
 
     cd 'support' do
       system 'make', 'ab'
