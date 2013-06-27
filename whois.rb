@@ -8,7 +8,7 @@ class Whois < Formula
   depends_on 'xz' => :build
 
   def install
-    system "make whois"
+    system "make HAVE_ICONV=1 whois_LDADD+=-liconv whois"
     bin.install "whois"
     man1.install "whois.1"
   end
