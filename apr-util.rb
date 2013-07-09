@@ -2,8 +2,8 @@ require 'formula'
 
 class AprUtil < Formula
   homepage 'http://apr.apache.org/'
-  url 'http://archive.apache.org/dist/apr/apr-util-1.5.1.tar.bz2'
-  sha1 '084000daa76b85a4e7021b1847840ca8fea3736c'
+  url 'http://www.apache.org/dyn/closer.cgi?path=apr/apr-util-1.5.2.tar.bz2'
+  sha1 '67139f51ee6c484f3f1b7b3edc0b00dae3640b0a'
 
   keg_only :provided_by_osx
 
