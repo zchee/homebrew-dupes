@@ -2,8 +2,8 @@ require 'formula'
 
 class Apr < Formula
   homepage 'http://apr.apache.org/'
-  url 'http://archive.apache.org/dist/apr/apr-1.4.6.tar.bz2'
-  sha1 '1a72fc9d89a378590ef243399396169426d1f6cf'
+  url 'http://www.apache.org/dyn/closer.cgi?path=apr/apr-1.4.8.tar.bz2'
+  sha1 '2dce90291b6d4072a6e47d096f5c81ae1ce76f9f'
 
   keg_only :provided_by_osx
 
