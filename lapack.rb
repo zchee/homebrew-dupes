@@ -6,13 +6,12 @@ class Lapack < Formula
   sha1 '93a6e4e6639aaf00571d53a580ddc415416e868b'
 
   depends_on :fortran
+  depends_on 'cmake' => :build
 
   keg_only :provided_by_osx
 
   def install
-    # Copy over make.inc, to load in configuration for this platform
-    mv "INSTALL/make.inc.gfortran", "make.inc"
-    system "make", "lib"
-    lib.install "liblapack.a"
+    system "cmake", ".", "-DCMAKE_INSTALL_PREFIX:PATH=#{prefix}", "-DBUILD_SHARED_LIBS:BOOL=ON", "-DLAPACKE:BOOL=ON"
+    system "make", "install"
   end
 end
