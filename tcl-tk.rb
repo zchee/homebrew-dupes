@@ -1,15 +1,13 @@
 require 'formula'
 
-# Tk is so tightly integrated into tcl; We made it a subformula.
-# If you don't want Tk, install `--without-tk`.
 class Tk < Formula
-  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.6.0/tk8.6.0-src.tar.gz'
+  url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tk8.6.0-src.tar.gz'
   sha1 'c42e160285e2d26eae8c2a1e6c6f86db4fa7663b'
 end
 
 class TclTk < Formula
   homepage 'http://www.tcl.tk/'
-  url 'http://sourceforge.net/projects/tcl/files/Tcl/8.6.0/tcl8.6.0-src.tar.gz'
+  url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tcl8.6.0-src.tar.gz'
   version '8.6.0'
   sha1 'fc57fc08ab113740a702bb67d4f350f8ec85ef58'
 
@@ -17,8 +15,9 @@ class TclTk < Formula
 
   option 'enable-threads', 'Build with multithreading support'
   option 'without-tk', "Don't build the Tk (window toolkit)"
+  option 'with-x11', 'Build X11-based Tk instead of Aqua-basd Tk'
 
-  depends_on :x11 => :optional  # if you prefre X11 based Tk over AquaTk.
+  depends_on :x11 => :optional
 
   def install
     args = ["--prefix=#{prefix}", "--mandir=#{man}"]
