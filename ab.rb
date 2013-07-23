@@ -5,7 +5,7 @@ class Ab < Formula
   url 'http://archive.apache.org/dist/httpd/httpd-2.4.3.tar.bz2'
   sha1 '0ef1281bb758add937efe61c345287be2f27f662'
 
-  depends_on 'homebrew/dupes/apr-util' if MacOS.version < :mountain_lion
+  depends_on 'homebrew/dupes/apr-util'
   depends_on 'libtool' => :build
 
   option 'with-ssl-patch', 'Apply patch for: Bug 49382 - ab says "SSL read failed"'
