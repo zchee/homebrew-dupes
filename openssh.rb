@@ -35,6 +35,11 @@ class Openssh < Formula
     args << "--with-ssl-dir=#{Formula.factory('openssl').opt_prefix}" if build.with? 'brewed-openssl'
     args << "--with-ldns" if build.with? "ldns"
 
+    # Sometimes when Apple ships security update, the libraries get
+    # updated while the headers don't. Disable header/library version
+    # check when using system openssl to cope with this situation.
+    args << "--without-openssl-header-check" if not build.with? 'brewed-openssl'
+
     system "./configure", *args
     system "make"
     system "make install"
