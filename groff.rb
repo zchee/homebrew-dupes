@@ -24,12 +24,6 @@ class Groff < Formula
   depends_on 'netpbm' if build.with? 'grohtml'
   depends_on 'psutils' if build.with? 'grohtml'
 
-  def patches
-    # The patched bug is only hit if --with-grohtml is used, cuasing
-    # configure to find pnmtops
-    DATA if build.with? 'grohtml'
-  end
-
   def install
     system "./configure", "--prefix=#{prefix}", "--without-x"
     system "make" # Separate steps required
@@ -43,31 +37,3 @@ class Groff < Formula
     EOS
   end
 end
-
-# Fix a bug where ./configure would hang trying to execute a shell
-# command with a '|' in it.
-__END__
-diff --git a/configure b/configure
-index 63e9e5d..6f97736 100755
---- a/configure
-+++ b/configure
-@@ -10440,18 +10440,8 @@ $as_echo "$as_me: WARNING: missing program$plural:
-
-
-
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether pnmtops can handle the -nosetpage option" >&5
--$as_echo_n "checking whether pnmtops can handle the -nosetpage option... " >&6; }
--   if echo P2 2 2 255 0 1 2 0 | pnmtops -nosetpage > /dev/null 2>&1 ; then
--     { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
--$as_echo "yes" >&6; }
--     pnmtops_nosetpage="pnmtops -nosetpage"
--   else
--     { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
--$as_echo "no" >&6; }
--     pnmtops_nosetpage="pnmtops"
--   fi
-
-+pnmtops_nosetpage="pnmtops -nosetpage"
-
-     { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether we are using the GNU C Library >= 2.1 or uClibc" >&5
- $as_echo_n "checking whether we are using the GNU C Library >= 2.1 or uClibc... " >&6; }
