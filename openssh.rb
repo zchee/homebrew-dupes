@@ -7,6 +7,7 @@ class Openssh < Formula
   sha1 'c2b4909eba6f5ec6f9f75866c202db47f3b501ba'
 
   option 'with-brewed-openssl', 'Build with Homebrew OpenSSL instead of the system version'
+  option 'with-keychain-support', 'Add native OS X Keychain and Launch Daemon support to ssh-agent'
 
   depends_on 'openssl' if build.with? 'brewed-openssl'
   depends_on 'ldns' => :optional
@@ -54,7 +55,7 @@ class Openssh < Formula
         and change ProgramArugments from
           /usr/bin/ssh-agent
         to
-          /usr/local/bin/ssh-agent
+          #{HOMEBREW_PREFIX}/bin/ssh-agent
 
         After that, you can start storing private key passwords in
         your OS X Keychain.
