@@ -1,10 +1,5 @@
 require 'formula'
 
-class Tk < Formula
-  url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tk8.6.0-src.tar.gz'
-  sha1 'c42e160285e2d26eae8c2a1e6c6f86db4fa7663b'
-end
-
 class TclTk < Formula
   homepage 'http://www.tcl.tk/'
   url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tcl8.6.0-src.tar.gz'
@@ -18,6 +13,12 @@ class TclTk < Formula
   option 'with-x11', 'Build X11-based Tk instead of Aqua-basd Tk'
 
   depends_on :x11 => :optional
+
+  resource 'tk' do
+    url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tk8.6.0-src.tar.gz'
+    version '8.6.0'
+    sha1 'c42e160285e2d26eae8c2a1e6c6f86db4fa7663b'
+  end
 
   # sqlite won't compile on Tiger due to missing function;
   # patch submitted upstream: http://thread.gmane.org/gmane.comp.db.sqlite.general/83257
@@ -39,7 +40,7 @@ class TclTk < Formula
     unless build.without? 'tk'
       ENV.prepend 'PATH', bin, ':'  # so that tk finds our new tclsh
 
-      Tk.new.brew do
+      resource('tk').stage do
         args = ["--prefix=#{prefix}",  # this is the prefix from TclTk
                 "--mandir=#{man}",
                 "--with-tcl=#{lib}"]
