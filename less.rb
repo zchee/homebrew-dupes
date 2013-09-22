@@ -5,8 +5,12 @@ class Less < Formula
   url 'http://www.greenwoodsoftware.com/less/less-458.tar.gz'
   sha1 'd5b07180d3dad327ccc8bc66818a31577e8710a2'
 
+  depends_on 'pcre' => :optional
+
   def install
-    system "./configure", "--prefix=#{prefix}"
+    args = ["--prefix=#{prefix}"]
+    args << '--with-regex=pcre' if build.with? 'pcre'
+    system "./configure", *args
     system "make install"
   end
 
