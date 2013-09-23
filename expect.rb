@@ -10,12 +10,28 @@ class Expect < Formula
 
   depends_on 'homebrew/dupes/tcl-tk' if build.with? 'brewed-tk'
 
+  # Autotools are introduced here to regenerate configure script. Remove
+  # if the patch has been applied in newer releases.
+  depends_on :autoconf => :build
+  depends_on :automake => :build
+  depends_on :libtool => :build
+
+  def patches
+    # Fix Tcl private header detection.
+    # https://sourceforge.net/p/expect/patches/17/
+    "https://sourceforge.net/p/expect/patches/17/attachment/expect_detect_tcl_private_header_os_x_mountain_lion.patch"
+  end
+
   def install
     args = ["--prefix=#{prefix}", "--exec-prefix=#{prefix}", "--mandir=#{man}"]
     args << "--enable-shared"
     args << "--enable-threads" if build.include? "enable-threads"
     args << "--enable-64bit" if MacOS.prefer_64_bit?
     args << "--with-tcl=#{Formula.factory('tcl-tk').opt_prefix}/lib" if build.with? 'brewed-tk'
+
+    # Regenerate configure script. Remove after patch applied in newer
+    # releases.
+    system "autoreconf", "--force", "--install", "--verbose"
 
     system "./configure", *args
     system "make"
