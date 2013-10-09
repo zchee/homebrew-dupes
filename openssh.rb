@@ -8,6 +8,7 @@ class Openssh < Formula
 
   option 'with-brewed-openssl', 'Build with Homebrew OpenSSL instead of the system version'
   option 'with-keychain-support', 'Add native OS X Keychain and Launch Daemon support to ssh-agent'
+  option 'with-gssapi-support', 'Add support to GSSAPI key exchange'
 
   depends_on 'openssl' if build.with? 'brewed-openssl'
   depends_on 'ldns' => :optional
@@ -16,8 +17,8 @@ class Openssh < Formula
   def patches
     p = []
     # Apply a revised version of Simon Wilkinson's gsskex patch (http://www.sxw.org.uk/computing/patches/openssh.html), which has also been included in Apple's openssh for a while
-    p << 'https://gist.github.com/netj/6507505/raw/ce98e830fc5669fe7ca492c32c378decffaaacf4/openssh-6.2p2-gsskex.patch'
-    p << 'https://gist.github.com/metacollin/5559308/raw/96adc2d51c722a799de95e2e9f391bba24bcf371/openssh-6.2p1.patch' if build.include? 'with-keychain-support'
+    p << 'https://gist.github.com/netj/6507505/raw/ce98e830fc5669fe7ca492c32c378decffaaacf4/openssh-6.2p2-gsskex.patch' if build.with? 'gssapi-support'
+    p << 'https://gist.github.com/metacollin/5559308/raw/96adc2d51c722a799de95e2e9f391bba24bcf371/openssh-6.2p1.patch' if build.with? 'keychain-support'
     p
   end
 
@@ -65,4 +66,3 @@ class Openssh < Formula
     end
   end
 end
-
