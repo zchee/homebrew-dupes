@@ -37,66 +37,26 @@ class Cvs < Formula
                           "--infodir=#{prefix}/share/info",
                           "--mandir=#{prefix}/share/man",
                           "--with-gssapi",
-                          "-enable-pam",
+                          "--enable-pam",
                           "--enable-encryption",
                           "--with-external-zlib",
                           "--enable-case-sensitivity",
                           "--with-editor=vim",
                           "ac_cv_func_working_mktime=no"
 
-    # Deal with config.h, since it's generated AFTER ./configure, so we can't prepatch it
-    File.open('config.h.ed', 'w') {|f| f.write(DATA.read.to_s)}
-    system "cat config.h.ed | ed - config.h"
-
     system "make", "install"
   end
 
   test do
     system "mkdir", "cvsroot"
-    system "mkdir", "cvsexample"
 
-    cvsexample = %x[echo ${PWD}/cvsexample].chomp
     cvsroot = %x[echo ${PWD}/cvsroot].chomp
 
     system "#{bin}/cvs", "-d", cvsroot, "init"
-    system "cd", cvsexample, ";", "CVSROOT=#{cvsroot}", "#{bin}/cvs", "import", "-m ", "'dir structure'", "cvsexample", "homebrew", "start"
+
+    mkdir "cvsexample" do
+      ENV['CVSROOT'] = "#{cvsroot}"
+      system "#{bin}/cvs", "import", "-m ", "'dir structure'", "cvsexample", "homebrew", "start"
+    end
   end
 end
-
-__END__
-/SIZEOF_LONG/c
-#ifdef __LP64__
-#define SIZEOF_LONG 8
-#else /* !__LP64__ */
-#define SIZEOF_LONG 4
-#endif /* __LP64__ */
-.
-/SIZEOF_PTRDIFF_T/c
-#ifdef __LP64__
-#define SIZEOF_PTRDIFF_T 8
-#else /* !__LP64__ */
-#define SIZEOF_PTRDIFF_T 4
-#endif /* __LP64__ */
-.
-/SIZEOF_SIZE_T/c
-#ifdef __LP64__
-#define SIZEOF_SIZE_T 8
-#else /* !__LP64__ */
-#define SIZEOF_SIZE_T 4
-#endif /* __LP64__ */
-.
-/UNIQUE_INT_TYPE_LONG/c
-#ifdef __LP64__
-#define UNIQUE_INT_TYPE_LONG 1
-#else /* !__LP64__ */
-/* #undef UNIQUE_INT_TYPE_LONG */
-#endif /* __LP64__ */
-.
-/UNIQUE_INT_TYPE_LONG_LONG/c
-#ifdef __LP64__
-/* #undef UNIQUE_INT_TYPE_LONG_LONG */
-#else /* !__LP64__ */
-#define UNIQUE_INT_TYPE_LONG_LONG 1
-#endif /* __LP64__ */
-.
-w
