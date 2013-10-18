@@ -11,6 +11,7 @@ class Apr < Formula
   # to CPPFLAGS, which is an obsolete Apple-only switch that breaks
   # builds under non-Apple compilers and which may or may not do anything
   # anymore.
+  # Reported upstream: https://issues.apache.org/bugzilla/show_bug.cgi?id=48483
   def patches; DATA; end
 
   def install
