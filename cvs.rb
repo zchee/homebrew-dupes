@@ -34,8 +34,8 @@ class Cvs < Formula
 
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
-                          "--infodir=#{prefix}/share/info",
-                          "--mandir=#{prefix}/share/man",
+                          "--infodir=#{info}",
+                          "--mandir=#{man}",
                           "--with-gssapi",
                           "--enable-pam",
                           "--enable-encryption",
