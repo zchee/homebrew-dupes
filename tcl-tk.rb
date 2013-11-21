@@ -10,7 +10,7 @@ class TclTk < Formula
 
   option 'enable-threads', 'Build with multithreading support'
   option 'without-tk', "Don't build the Tk (window toolkit)"
-  option 'with-x11', 'Build X11-based Tk instead of Aqua-basd Tk'
+  option 'with-x11', 'Build X11-based Tk instead of Aqua-based Tk'
 
   depends_on :x11 => :optional
 
