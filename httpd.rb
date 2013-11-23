@@ -2,8 +2,8 @@ require 'formula'
 
 class Httpd < Formula
   homepage 'http://httpd.apache.org/'
-  url 'http://www.apache.org/dist/httpd/httpd-2.2.25.tar.bz2'
-  sha1 'e34222d1a8de38825397a1c70949bcc5836a1236'
+  url 'http://www.apache.org/dist/httpd/httpd-2.2.26.tar.bz2'
+  sha1 'ecfa7dab239ef177668ad1d5cf9d03c4602607b8'
 
   skip_clean :la
 
@@ -32,7 +32,8 @@ class Httpd < Formula
                           "--enable-rewrite"
     system "make"
     system "make install"
-    %w{log run}.each { |dir| (var/"apache2"/dir).mkpath }
+    (var/'apache2/log').mkpath
+    (var/'apache2/run').mkpath
   end
 
   def plist; <<-EOS.undent
