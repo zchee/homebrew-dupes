@@ -2,9 +2,9 @@ require 'formula'
 
 class Openssh < Formula
   homepage 'http://www.openssh.com/'
-  url 'http://ftp5.usa.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.2p2.tar.gz'
-  version '6.2p2'
-  sha1 'c2b4909eba6f5ec6f9f75866c202db47f3b501ba'
+  url 'http://ftp5.usa.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.4p1.tar.gz'
+  version '6.4p1'
+  sha1 'cf5fe0eb118d7e4f9296fbc5d6884965885fc55d'
 
   option 'with-brewed-openssl', 'Build with Homebrew OpenSSL instead of the system version'
   option 'with-keychain-support', 'Add native OS X Keychain and Launch Daemon support to ssh-agent'
