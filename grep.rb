@@ -35,5 +35,5 @@ class Grep < Formula
     The command has been installed with the prefix 'g'.
     If you do not want the prefix, install using the 'default-names' option.
     EOS
-  end
+  end unless build.include? 'default-names'
 end
