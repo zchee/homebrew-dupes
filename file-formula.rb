@@ -18,8 +18,17 @@ class FileFormula < Formula
   def install
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
+                          "--bindir=#{libexec}",
                           "--enable-fsect-man5"
     system "make install"
+
+    # one of the regexes in file 5.15 fails when the locale is
+    # set to UTF-8, so force C; reported upstream:
+    # http://bugs.gw.com/view.php?id=292
+    (bin/'file').write <<-EOS.undent
+    #!/bin/bash
+    LC_CTYPE=C exec #{libexec}/file $@
+    EOS
   end
 end
 
