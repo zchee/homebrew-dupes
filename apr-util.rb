@@ -8,13 +8,20 @@ class AprUtil < Formula
   keg_only :provided_by_osx
 
   depends_on 'apr'
+  depends_on 'mysql-connector-c' => :optional
 
   def install
     # Compilation will not complete without deparallelize
     ENV.deparallelize
 
-    system "./configure", "--disable-debug", "--prefix=#{prefix}",
-                          "--with-apr=#{Formula["apr"].opt_prefix}"
+    args = %W[
+      --disable-debug
+      --prefix=#{prefix}
+      --with-apr=#{Formula["apr"].opt_prefix}
+    ]
+    args << "--with-mysql=#{Formula["mysql-connector-c"].opt_prefix}" if build.with? "mysql-connector-c"
+
+    system "./configure", *args
     system "make"
     system "make install"
   end
