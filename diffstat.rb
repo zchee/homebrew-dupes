@@ -3,8 +3,8 @@ require 'formula'
 class Diffstat < Formula
   homepage 'http://invisible-island.net/diffstat/'
   url 'http://invisible-island.net/datafiles/release/diffstat.tar.gz'
-  version '1.57'
-  sha1 'c6d9247b8b32eeab5d866686f91a8fbdde3e340f'
+  version '1.58'
+  sha1 '7a67ecb996ea65480bd0b9db33d8ed458e5f2a24'
 
   def install
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
