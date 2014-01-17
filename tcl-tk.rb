@@ -2,9 +2,9 @@ require 'formula'
 
 class TclTk < Formula
   homepage 'http://www.tcl.tk/'
-  url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tcl8.6.0-src.tar.gz'
-  version '8.6.0'
-  sha1 'fc57fc08ab113740a702bb67d4f350f8ec85ef58'
+  url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tcl8.6.1-src.tar.gz'
+  version '8.6.1'
+  sha1 '5c83d44152cc0496cc0847a2495f659502a30e40'
 
   keg_only "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
 
@@ -15,9 +15,9 @@ class TclTk < Formula
   depends_on :x11 => :optional
 
   resource 'tk' do
-    url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.0/tk8.6.0-src.tar.gz'
-    version '8.6.0'
-    sha1 'c42e160285e2d26eae8c2a1e6c6f86db4fa7663b'
+    url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tk8.6.1-src.tar.gz'
+    version '8.6.1'
+    sha1 'ecfcc20833c04d6890b14a7920a04d16f2123a51'
   end
 
   # sqlite won't compile on Tiger due to missing function;
