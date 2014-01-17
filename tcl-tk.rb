@@ -41,6 +41,13 @@ class TclTk < Formula
       ENV.prepend 'PATH', bin, ':'  # so that tk finds our new tclsh
 
       resource('tk').stage do
+        # Upstream fix for rendering on 10.9; should be in next release
+        # https://core.tcl.tk/tk/info/5a5abf71f9
+        # This is an inreplace and not a patch because resources don't
+        # support patches. Luckily it's a one-line fix.
+        inreplace 'macosx/tkMacOSXDraw.c',
+          '[[dcPtr->view window] enableFlushWindow];',
+          "[[dcPtr->view window] setViewsNeedDisplay:YES];\n[[dcPtr->view window] enableFlushWindow];"
         args = ["--prefix=#{prefix}",  # this is the prefix from TclTk
                 "--mandir=#{man}",
                 "--with-tcl=#{lib}"]
