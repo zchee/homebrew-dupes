@@ -2,11 +2,10 @@ require 'formula'
 
 class Grep < Formula
   homepage 'http://www.gnu.org/software/grep/'
-  url 'http://ftpmirror.gnu.org/grep/grep-2.15.tar.xz'
-  mirror 'http://ftp.gnu.org/gnu/grep/grep-2.15.tar.xz'
-  sha256 'bf5a834e587974c8c64e71b35b9e75cd21c7ff253c0e7fbfb0a78be794965314'
+  url 'http://ftpmirror.gnu.org/grep/grep-2.16.tar.xz'
+  mirror 'http://ftp.gnu.org/gnu/grep/grep-2.16.tar.xz'
+  sha256 '16dfeb5013d8c9f21f40ccec0936f2c1c6a014c828d30488f0d5c6ef7b551162'
 
-  depends_on 'xz' => :build
   depends_on 'pcre'
 
   option 'default-names', "Do not prepend 'g' to the binary"
