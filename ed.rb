@@ -2,9 +2,9 @@ require 'formula'
 
 class Ed < Formula
   homepage 'http://www.gnu.org/software/ed/ed.html'
-  url 'http://ftpmirror.gnu.org/ed/ed-1.8.tar.gz'
-  mirror 'http://ftp.gnu.org/gnu/ed/ed-1.8.tar.gz'
-  sha1 'e0a8edd4ed750ae67164b8bef7a30a051fe902ea'
+  url 'http://ftpmirror.gnu.org/ed/ed-1.9.tar.gz'
+  mirror 'http://ftp.gnu.org/gnu/ed/ed-1.9.tar.gz'
+  sha1 'a7f01929eb9ae5fe2d3255cd99e41a2211571984'
 
   option 'default-names', "Don't prepend 'g' to the binaries"
 
