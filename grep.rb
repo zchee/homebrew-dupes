@@ -2,9 +2,9 @@ require 'formula'
 
 class Grep < Formula
   homepage 'http://www.gnu.org/software/grep/'
-  url 'http://ftpmirror.gnu.org/grep/grep-2.16.tar.xz'
-  mirror 'http://ftp.gnu.org/gnu/grep/grep-2.16.tar.xz'
-  sha256 '16dfeb5013d8c9f21f40ccec0936f2c1c6a014c828d30488f0d5c6ef7b551162'
+  url 'http://ftpmirror.gnu.org/grep/grep-2.17.tar.xz'
+  mirror 'http://ftp.gnu.org/gnu/grep/grep-2.17.tar.xz'
+  sha256 '26fdb0220cd27699f82612352f52429b472f140cdc8315ad9eaa6d70e75a06e5'
 
   depends_on 'pcre'
 
