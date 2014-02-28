@@ -32,8 +32,8 @@ class Ab < Formula
     ENV['LTFLAGS'] = '--tag CC'
     system "./configure", "--prefix=#{prefix}", "--disable-debug",
                           "--disable-dependency-tracking",
-                          "--with-apr=#{Formula.factory('homebrew/dupes/apr').opt_prefix}",
-                          "--with-apr-util=#{Formula.factory('homebrew/dupes/apr-util').opt_prefix}"
+                          "--with-apr=#{Formula["homebrew/dupes/apr"].opt_prefix}",
+                          "--with-apr-util=#{Formula["homebrew/dupes/apr-util"].opt_prefix}"
 
     cd 'support' do
       system 'make', 'ab'

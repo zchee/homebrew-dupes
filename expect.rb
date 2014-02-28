@@ -27,7 +27,7 @@ class Expect < Formula
     args << "--enable-shared"
     args << "--enable-threads" if build.include? "enable-threads"
     args << "--enable-64bit" if MacOS.prefer_64_bit?
-    args << "--with-tcl=#{Formula.factory('tcl-tk').opt_prefix}/lib" if build.with? 'brewed-tk'
+    args << "--with-tcl=#{Formula["tcl-tk"].opt_prefix}/lib" if build.with? 'brewed-tk'
 
     # Regenerate configure script. Remove after patch applied in newer
     # releases.

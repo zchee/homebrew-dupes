@@ -14,7 +14,7 @@ class AprUtil < Formula
     ENV.deparallelize
 
     system "./configure", "--disable-debug", "--prefix=#{prefix}",
-                          "--with-apr=#{Formula.factory('apr').opt_prefix}"
+                          "--with-apr=#{Formula["apr"].opt_prefix}"
     system "make"
     system "make install"
   end

@@ -11,7 +11,7 @@ class Grep < Formula
   option 'default-names', "Do not prepend 'g' to the binary"
 
   def install
-    pcre = Formula.factory('pcre').opt_prefix
+    pcre = Formula["pcre"].opt_prefix
     ENV.append 'LDFLAGS', "-L#{pcre}/lib -lpcre"
     ENV.append 'CPPFLAGS', "-I#{pcre}/include"
 

@@ -39,7 +39,7 @@ class Openssh < Formula
       --sysconfdir=#{etc}/ssh
     ]
 
-    args << "--with-ssl-dir=#{Formula.factory('openssl').opt_prefix}" if build.with? 'brewed-openssl'
+    args << "--with-ssl-dir=#{Formula["openssl"].opt_prefix}" if build.with? 'brewed-openssl'
     args << "--with-ldns" if build.with? "ldns"
 
     # Sometimes when Apple ships security update, the libraries get
