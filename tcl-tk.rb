@@ -2,7 +2,7 @@ require 'formula'
 
 class TclTk < Formula
   homepage 'http://www.tcl.tk/'
-  url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tcl8.6.1-src.tar.gz'
+  url 'https://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tcl8.6.1-src.tar.gz'
   version '8.6.1'
   sha1 '5c83d44152cc0496cc0847a2495f659502a30e40'
 

@@ -2,7 +2,7 @@ require 'formula'
 
 class Expect < Formula
   homepage 'http://expect.sourceforge.net'
-  url 'http://downloads.sourceforge.net/project/expect/Expect/5.45/expect5.45.tar.gz'
+  url 'https://downloads.sourceforge.net/project/expect/Expect/5.45/expect5.45.tar.gz'
   sha1 'e634992cab35b7c6931e1f21fbb8f74d464bd496'
 
   option 'enable-threads', 'Build with multithreading support'
