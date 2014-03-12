@@ -2,8 +2,8 @@ require 'formula'
 
 class Heimdal < Formula
   homepage 'http://www.h5l.org'
-  url 'http://h5l.org/dist/src/heimdal-1.5.2.tar.gz'
-  sha1 'dd0920a181d18236432e4b3e5eab6e468cda4b89'
+  url 'http://www.h5l.org/dist/src/heimdal-1.6rc2.tar.gz'
+  sha1 'f129ec039c7b62ea8226d907db270f1cc0bca7d3'
 
   depends_on :x11 => :recommended
 
