@@ -20,6 +20,13 @@ class TclTk < Formula
     sha1 'ecfcc20833c04d6890b14a7920a04d16f2123a51'
   end
 
+  # https://github.com/Homebrew/homebrew-dupes/issues/286
+  # If built with gcc-4.2, tk will still run.
+  fails_with :clang do
+    build 503
+    cause "Objective C garbage collection is no longer supported in clang 5.1"
+  end if build.with? 'tk'
+
   # sqlite won't compile on Tiger due to missing function;
   # patch submitted upstream: http://thread.gmane.org/gmane.comp.db.sqlite.general/83257
   def patches; DATA; end if MacOS.version < :leopard
