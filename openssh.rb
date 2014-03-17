@@ -13,18 +13,17 @@ class Openssh < Formula
   depends_on 'ldns' => :optional
   depends_on 'pkg-config' => :build if build.with? "ldns"
 
-  def patches
-    p = []
-    p << 'https://gist.githubusercontent.com/Bluerise/9400603/raw/28b1cabcc468ce67a41b866eec03032d814a8c18/OpenSSH+6.6p1+keychain+support' if build.include? 'with-keychain-support'
-    p
-  end
+  patch do
+    url "https://gist.githubusercontent.com/Bluerise/9400603/raw/28b1cabcc468ce67a41b866eec03032d814a8c18/OpenSSH+6.6p1+keychain+support"
+    sha1 "32e6527d7d70b3c0c9a6bd18ddd0b13ed939ea92"
+  end if build.with? "keychain-support"
 
   def install
     system "autoreconf -i" if build.with? 'keychain-support'
 
-    if build.include? "with-keychain-support"
-        ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"
-        ENV.append "LDFLAGS", "-framework CoreFoundation -framework SecurityFoundation -framework Security"
+    if build.with? "keychain-support"
+      ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"
+      ENV.append "LDFLAGS", "-framework CoreFoundation -framework SecurityFoundation -framework Security"
     end
 
     args = %W[
@@ -43,8 +42,7 @@ class Openssh < Formula
   end
 
   def caveats
-    if build.include? "with-keychain-support"
-      <<-EOS.undent
+    if build.with? "keychain-support" then <<-EOS.undent
         For complete functionality, please modify:
           /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
 
