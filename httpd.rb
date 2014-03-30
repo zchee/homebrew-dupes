@@ -2,8 +2,8 @@ require 'formula'
 
 class Httpd < Formula
   homepage 'http://httpd.apache.org/'
-  url 'http://www.apache.org/dist/httpd/httpd-2.2.26.tar.bz2'
-  sha1 'ecfa7dab239ef177668ad1d5cf9d03c4602607b8'
+  url 'http://www.apache.org/dist/httpd/httpd-2.2.27.tar.bz2'
+  sha1 'fd4bf18dd1b3e0d9be9e85ff7e033b2eb8aa4976'
 
   skip_clean :la
 
@@ -53,5 +53,9 @@ class Httpd < Formula
     </dict>
     </plist>
     EOS
+  end
+
+  test do
+    system sbin/"httpd", "-v"
   end
 end
