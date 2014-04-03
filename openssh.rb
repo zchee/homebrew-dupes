@@ -50,7 +50,18 @@ class Openssh < Formula
           /usr/bin/ssh-agent
         to
           #{HOMEBREW_PREFIX}/bin/ssh-agent
+          
+        
+        Finally, add  these lines somewhere to your ~/.bash_profile:
+          eval $(ssh-agent)
+          
+          function cleanup {
+            echo "Killing SSH-Agent"
+            kill -9 $SSH_AGENT_PID
+          }
 
+          trap cleanup EXIT
+        
         After that, you can start storing private key passwords in
         your OS X Keychain.
       EOS
