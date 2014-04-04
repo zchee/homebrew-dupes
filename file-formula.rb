@@ -3,9 +3,9 @@ require 'formula'
 # "File" is a reserved class name
 class FileFormula < Formula
   homepage 'http://www.darwinsys.com/file/'
-  url 'ftp://ftp.astron.com/pub/file/file-5.17.tar.gz'
-  mirror 'http://fossies.org/unix/misc/file-5.17.tar.gz'
-  sha1 'f7e837a0d3e4f40a02ffe7da5e146b967448e0d8'
+  url 'ftp://ftp.astron.com/pub/file/file-5.18.tar.gz'
+  mirror 'http://fossies.org/unix/misc/file-5.18.tar.gz'
+  sha1 '8753e72097f2cc935608e3b1c57c4c4e31bd8d21'
 
   head 'https://github.com/glensc/file.git'
 
