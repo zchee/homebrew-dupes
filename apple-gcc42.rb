@@ -1,37 +1,18 @@
 require 'formula'
 
-class PkgDownloadStrategy < CurlDownloadStrategy
-  def stage
-    # The compilers are distributed as a OS X 10.5 package- a single flat xar
-    # archive instead of a bundle.
-    safe_system '/usr/bin/xar', '-xf', @tarball_path
-    chdir
-
-    # Clean up.
-    safe_system "mv *.pkg/Payload Payload.gz"
-    safe_system "ls | grep -v Payload | xargs rm -r"
-  end
-end
-
 class AppleGcc42 < Formula
   homepage 'http://r.research.att.com/tools/'
-  url 'http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg',
-    :using => PkgDownloadStrategy
+  url 'http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg'
+  mirror 'http://web.archive.org/web/20130512150329/http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg'
   version '4.2.1-5666.3'
   sha1 '8fadde2a159082d6474fe9e325b6301e3c0bc84f'
 
   option 'with-gfortran-symlink', 'Provide gfortran symlinks'
 
-  def install
-    unless MacOS.version >= :lion
-      onoe <<-EOS.undent
-        The compilers provided by this formula are designed for use on systems
-        running OS X 10.7.
-      EOS
-      exit 1
-    end
+  depends_on :macos => :lion
 
-    safe_system "pax --insecure -rz -f Payload.gz -s ',./usr,#{prefix},'"
+  def install
+    system "/bin/pax", "--insecure", "-rz", "-f", "usr.pkg/Payload", "-s", ",./usr,#{prefix},"
 
     if build.include? 'with-gfortran-symlink'
       safe_system "ln -sf #{bin}/gfortran-4.2 #{bin}/gfortran"
