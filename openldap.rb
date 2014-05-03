@@ -2,8 +2,8 @@ require 'formula'
 
 class Openldap < Formula
   homepage 'http://www.openldap.org/software/'
-  url 'ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.33.tgz'
-  sha1 '0cea642ba2dae1eb719da41bfedb9eba72ad504d'
+  url 'ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.39.tgz'
+  sha256 '8267c87347103fef56b783b24877c0feda1063d3cb85d070e503d076584bf8a7'
 
   depends_on 'berkeley-db' => :optional
 
