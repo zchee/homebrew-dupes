@@ -44,8 +44,8 @@ class TclTk < Formula
       ln_s bin+'tclsh8.6', bin+'tclsh'
     end
 
-    unless build.without? 'tk'
-      ENV.prepend 'PATH', bin, ':'  # so that tk finds our new tclsh
+    if build.with? 'tk'
+      ENV.prepend_path 'PATH', bin # so that tk finds our new tclsh
 
       resource('tk').stage do
         # Upstream fix for rendering on 10.9; should be in next release

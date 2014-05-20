@@ -14,7 +14,7 @@ class AppleGcc42 < Formula
   def install
     system "/bin/pax", "--insecure", "-rz", "-f", "usr.pkg/Payload", "-s", ",./usr,#{prefix},"
 
-    if build.include? 'with-gfortran-symlink'
+    if build.with? 'gfortran-symlink'
       safe_system "ln -sf #{bin}/gfortran-4.2 #{bin}/gfortran"
       safe_system "ln -sf #{man1}/gfortran-4.2.1 #{man1}/gfortran.1"
     end

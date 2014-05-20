@@ -14,7 +14,7 @@ class Heimdal < Formula
           --prefix=#{prefix}
       ]
 
-      args << "--without-x" unless build.with? "x11"
+      args << "--without-x" if build.without? "x11"
 
       system "./configure", *args
       system "make install"

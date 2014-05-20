@@ -12,9 +12,7 @@ class Openldap < Formula
               --prefix=#{prefix}
               --sysconfdir=#{etc}
               --localstatedir=#{var}]
-
-    args << "--enable-bdb=no" unless build.with? "berkeley-db"
-    args << "--enable-hdb=no" unless build.with? "berkeley-db"
+    args << "--enable-bdb=no" << "--enable-hdb=no" if build.without? "berkeley-db"
 
     system "./configure", *args
     system "make install"
