@@ -1,6 +1,12 @@
 require 'formula'
 
 class Rsync < Formula
+
+  # NOTE: we're pusing 3.0.9 on purpose. 3.1.0 has a protocol bug in
+  # it that has not, to our knowledge, been fixed yet. If you propose
+  # an update to this formula, you need to test this across two
+  # machines with the same version.
+
   homepage 'https://rsync.samba.org/'
   url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.0.9.tar.gz'
   sha1 'c64c8341984aea647506eb504496999fd968ddfc'
