@@ -7,9 +7,9 @@ class Tidy < Formula
 
   head 'https://github.com/w3c/tidy-html5.git'
 
-  depends_on :autoconf => :build
-  depends_on :automake => :build
-  depends_on :libtool => :build
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "libtool" => :build
 
   def install
     system 'sh', 'build/gnuauto/setup.sh'

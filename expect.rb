@@ -12,9 +12,9 @@ class Expect < Formula
 
   # Autotools are introduced here to regenerate configure script. Remove
   # if the patch has been applied in newer releases.
-  depends_on :autoconf => :build
-  depends_on :automake => :build
-  depends_on :libtool => :build
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "libtool" => :build
 
   def patches
     # Fix Tcl private header detection.

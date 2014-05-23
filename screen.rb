@@ -9,7 +9,7 @@ class Screen < Formula
 
   head 'git://git.savannah.gnu.org/screen.git', :branch => 'master'
 
-  depends_on :autoconf
+  depends_on "autoconf" => :build
 
   def patches
     if build.head?

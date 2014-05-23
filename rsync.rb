@@ -11,7 +11,7 @@ class Rsync < Formula
   url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.0.9.tar.gz'
   sha1 'c64c8341984aea647506eb504496999fd968ddfc'
 
-  depends_on :autoconf
+  depends_on "autoconf" => :build
 
   def patches
     %W[
