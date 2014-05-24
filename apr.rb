@@ -12,7 +12,7 @@ class Apr < Formula
   # builds under non-Apple compilers and which may or may not do anything
   # anymore.
   # Reported upstream: https://issues.apache.org/bugzilla/show_bug.cgi?id=48483
-  def patches; DATA; end
+  patch :DATA
 
   def install
     # Compilation will not complete without deparallelize

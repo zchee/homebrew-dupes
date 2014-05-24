@@ -13,7 +13,7 @@ class FileFormula < Formula
 
   # Fixed upstream, may be in next release
   # See http://bugs.gw.com/view.php?id=230
-  def patches; DATA; end if MacOS.version < :lion
+  patch :DATA if MacOS.version < :lion
 
   def install
     system "./configure", "--disable-dependency-tracking",

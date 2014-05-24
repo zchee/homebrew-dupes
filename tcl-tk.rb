@@ -29,7 +29,7 @@ class TclTk < Formula
 
   # sqlite won't compile on Tiger due to missing function;
   # patch submitted upstream: http://thread.gmane.org/gmane.comp.db.sqlite.general/83257
-  def patches; DATA; end if MacOS.version < :leopard
+  patch :DATA if MacOS.version < :leopard
 
   def install
     args = ["--prefix=#{prefix}", "--mandir=#{man}"]

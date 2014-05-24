@@ -10,12 +10,10 @@ class Zlib < Formula
 
   option :universal
 
-  def patches
-    # configure script fails to detect the right compiler when "cc" is
-    # clang, not gcc. zlib mantainers have been notified of the issue.
-    # See: https://github.com/Homebrew/homebrew-dupes/pull/228
-    DATA
-  end
+  # configure script fails to detect the right compiler when "cc" is
+  # clang, not gcc. zlib mantainers have been notified of the issue.
+  # See: https://github.com/Homebrew/homebrew-dupes/pull/228
+  patch :DATA
 
   def install
     ENV.universal_binary if build.universal?
