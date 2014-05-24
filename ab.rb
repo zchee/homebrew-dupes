@@ -10,21 +10,16 @@ class Ab < Formula
 
   option 'with-ssl-patch', 'Apply patch for: Bug 49382 - ab says "SSL read failed"'
 
-  def patches
-    # Disable requirement for PCRE, because "ab" does not use it
-    patches = {
-      :p1 => DATA,
-    }
+  # Disable requirement for PCRE, because "ab" does not use it
+  patch :DATA
 
-    # Patch for https://issues.apache.org/bugzilla/show_bug.cgi?id=49382
-    # Upstream has not incorporated the patch. Should keep following
-    # what upstream do about this.
-    if build.with? 'ssl-patch'
-      patches[:p0] = 'https://issues.apache.org/bugzilla/attachment.cgi?id=28435'
-    end
-
-    patches
-  end
+  # Patch for https://issues.apache.org/bugzilla/show_bug.cgi?id=49382
+  # Upstream has not incorporated the patch. Should keep following
+  # what upstream do about this.
+  patch do
+    url "https://issues.apache.org/bugzilla/attachment.cgi?id=28435"
+    sha1 "5d430b6cf599b55628adf02648a04bfbb5fd1fa8"
+  end if build.with? "ssl-patch"
 
   def install
     # Mountain Lion requires this to be set, as otherwise libtool complains

@@ -10,13 +10,16 @@ class Libiconv < Formula
 
   option :universal
 
-  def patches
-    { :p1 => [
-      'https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-Makefile.devel',
-      'https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-utf8mac.diff',
-      DATA
-    ]}
+  patch do
+    url "https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-Makefile.devel"
+    sha1 "44b0cd68279dafc584faa24c9b301186330542ae"
   end
+
+  patch do
+    url "https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-utf8mac.diff"
+    sha1 "b47d62b5e516291fd87fd758181eeda4c786c8de"
+  end
+  patch :DATA
 
   def install
     ENV.universal_binary if build.universal?

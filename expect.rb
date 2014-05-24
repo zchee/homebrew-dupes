@@ -16,10 +16,11 @@ class Expect < Formula
   depends_on "automake" => :build
   depends_on "libtool" => :build
 
-  def patches
-    # Fix Tcl private header detection.
-    # https://sourceforge.net/p/expect/patches/17/
-    "https://sourceforge.net/p/expect/patches/17/attachment/expect_detect_tcl_private_header_os_x_mountain_lion.patch"
+  # Fix Tcl private header detection.
+  # https://sourceforge.net/p/expect/patches/17/
+  patch do
+    url "https://sourceforge.net/p/expect/patches/17/attachment/expect_detect_tcl_private_header_os_x_mountain_lion.patch"
+    sha1 "396c2672ec50d64f83002b950ca48420363b942f"
   end
 
   def install

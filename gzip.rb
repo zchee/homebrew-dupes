@@ -7,8 +7,9 @@ class Gzip < Formula
   sha1 '7ec6403090b3eaeb53ef017223cb8034eebc1f49'
 
   # Add support for --rsyncable option
-  def patches
-    "http://cvs.pld-linux.org/cgi-bin/viewvc.cgi/cvs/packages/gzip/gzip-rsyncable.patch?revision=1.4&view=co"
+  patch do
+    url "http://cvs.pld-linux.org/cgi-bin/viewvc.cgi/cvs/packages/gzip/gzip-rsyncable.patch?revision=1.4&view=co"
+    sha1 "e59c60fcb8a70a8ef2884a624e439b0b6d9b5ace"
   end
 
   def install

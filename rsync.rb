@@ -13,12 +13,19 @@ class Rsync < Formula
 
   depends_on "autoconf" => :build
 
-  def patches
-    %W[
-      https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=fileflags.diff
-      https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=crtimes.diff
-      https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=hfs-compression.diff
-    ]
+  patch do
+    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=fileflags.diff"
+    sha1 "34dddc151c17567eaba7bc5b835b6738aeeb3fb6"
+  end
+
+  patch do
+    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=crtimes.diff"
+    sha1 "1aafabd064067ed3bdf1c2094f35c4c5aba0427b"
+  end
+
+  patch do
+    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=hfs-compression.diff"
+    sha1 "9a486b1a0187999c8a92453857800aa135a80841"
   end
 
   def install
