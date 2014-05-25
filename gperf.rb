@@ -6,7 +6,7 @@ class Gperf < Formula
   mirror 'http://ftp.gnu.org/pub/gnu/gperf/gperf-3.0.4.tar.gz'
   sha1 'e32d4aff8f0c730c9a56554377b2c6d82d0951b8'
 
-  keg_only "Xcode (up to and including 4.3) provides (a rather old) Gperf."
+  keg_only :provided_until_xcode43
 
   def install
     system "./configure", "--prefix=#{prefix}"
