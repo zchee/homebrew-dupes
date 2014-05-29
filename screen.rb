@@ -6,7 +6,6 @@ class Screen < Formula
   stable do
     url "http://ftpmirror.gnu.org/screen/screen-4.2.1.tar.gz"
     mirror "http://ftp.gnu.org/gnu/screen/screen-4.2.1.tar.gz"
-    version "4.2.1"
     sha1 "21eadf5f1d64120649f3390346253c6bc8a5103c"
   end
 
