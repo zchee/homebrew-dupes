@@ -1,10 +1,10 @@
 require "formula"
 
 class Grep < Formula
-  homepage "http://www.gnu.org/software/grep/"
-  url "http://ftpmirror.gnu.org/grep/grep-2.19.tar.xz"
-  mirror "http://ftp.gnu.org/gnu/grep/grep-2.19.tar.xz"
-  sha256 "6388295be48cfcaf7665d9cd3914e6625ea000e9414132bfefd45cf1d8eec34d"
+  homepage "https://www.gnu.org/software/grep/"
+  url "http://ftpmirror.gnu.org/grep/grep-2.20.tar.xz"
+  mirror "https://ftp.gnu.org/gnu/grep/grep-2.20.tar.xz"
+  sha256 "f0af452bc0d09464b6d089b6d56a0a3c16672e9ed9118fbe37b0b6aeaf069a65"
 
   depends_on "pcre"
 
