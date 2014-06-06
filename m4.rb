@@ -1,10 +1,10 @@
-require 'formula'
+require "formula"
 
 class M4 < Formula
-  homepage 'http://www.gnu.org/software/m4'
-  url 'http://ftpmirror.gnu.org/m4/m4-1.4.16.tar.bz2'
-  mirror 'http://ftp.gnu.org/gnu/m4/m4-1.4.16.tar.bz2'
-  sha1 '0390c77780ab4cd65b07fe4e2d23e4e39769f967'
+  homepage "https://www.gnu.org/software/m4"
+  url "http://ftpmirror.gnu.org/m4/m4-1.4.17.tar.xz"
+  mirror "https://ftp.gnu.org/gnu/m4/m4-1.4.17.tar.xz"
+  sha1 "74ad71fa100ec8c13bc715082757eb9ab1e4bbb0"
 
   keg_only :provided_by_osx
 
