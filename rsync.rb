@@ -2,30 +2,25 @@ require 'formula'
 
 class Rsync < Formula
 
-  # NOTE: we're pusing 3.0.9 on purpose. 3.1.0 has a protocol bug in
-  # it that has not, to our knowledge, been fixed yet. If you propose
-  # an update to this formula, you need to test this across two
-  # machines with the same version.
-
   homepage 'https://rsync.samba.org/'
-  url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.0.9.tar.gz'
-  sha1 'c64c8341984aea647506eb504496999fd968ddfc'
+  url 'https://rsync.samba.org/ftp/rsync/rsync-3.1.1.tar.gz'
+  sha1 'c84faba04f721d393feccfa0476bfeed9b5b5250'
 
   depends_on "autoconf" => :build
 
   patch do
-    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=fileflags.diff"
-    sha1 "34dddc151c17567eaba7bc5b835b6738aeeb3fb6"
+    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.1.1;f=fileflags.diff"
+    sha1 "71b88f5958f88f5c5664ed4ee10957a7dee10ff3"
   end
 
   patch do
-    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=crtimes.diff"
-    sha1 "1aafabd064067ed3bdf1c2094f35c4c5aba0427b"
+    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.1.1;f=crtimes.diff"
+    sha1 "d00a104eb18177d5106ccc057cbd7e54b2693447"
   end
 
   patch do
-    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.0.9;f=hfs-compression.diff"
-    sha1 "9a486b1a0187999c8a92453857800aa135a80841"
+    url "https://gitweb.samba.org/?p=rsync-patches.git;a=blob_plain;hb=v3.1.1;f=hfs-compression.diff"
+    sha1 "b5698b26ae358658207ce3627c20aef605b6ddd4"
   end
 
   def install
