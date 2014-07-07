@@ -1,7 +1,6 @@
 require 'formula'
 
 class Rsync < Formula
-
   homepage 'https://rsync.samba.org/'
   url 'https://rsync.samba.org/ftp/rsync/rsync-3.1.1.tar.gz'
   sha1 'c84faba04f721d393feccfa0476bfeed9b5b5250'
