@@ -20,13 +20,6 @@ class TclTk < Formula
     sha1 'ecfcc20833c04d6890b14a7920a04d16f2123a51'
   end
 
-  # https://github.com/Homebrew/homebrew-dupes/issues/286
-  # If built with gcc-4.2, tk will still run.
-  fails_with :clang do
-    build 503
-    cause "Objective C garbage collection is no longer supported in clang 5.1"
-  end if build.with? 'tk'
-
   # sqlite won't compile on Tiger due to missing function;
   # patch submitted upstream: http://thread.gmane.org/gmane.comp.db.sqlite.general/83257
   patch :DATA if MacOS.version < :leopard
@@ -55,6 +48,20 @@ class TclTk < Formula
         inreplace 'macosx/tkMacOSXDraw.c',
           '[[dcPtr->view window] enableFlushWindow];',
           "[[dcPtr->view window] setViewsNeedDisplay:YES];\n[[dcPtr->view window] enableFlushWindow];"
+
+        # Garbage collection fix
+        # https://github.com/Homebrew/homebrew-dupes/issues/286
+        # patch submitted upstream by keven_walzer https://github.com/tcltk/tk/commit/0ea0476a797b97b368ab770f4514eb
+        inreplace 'macosx/Wish-Info.plist.in',
+               "</dict>",
+               "\t<key>NSHighResolutionCapable</key>\n\t<string>True</string>\n</dict>"
+        inreplace 'unix/configure',
+               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c -fobjc-gc",
+               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c"
+        inreplace 'unix/configure.in',
+               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c -fobjc-gc",
+               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c"
+
         args = ["--prefix=#{prefix}",  # this is the prefix from TclTk
                 "--mandir=#{man}",
                 "--with-tcl=#{lib}"]
