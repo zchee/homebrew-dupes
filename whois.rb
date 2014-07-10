@@ -1,11 +1,11 @@
-require 'formula'
+require "formula"
 
 class Whois < Formula
-  homepage 'http://packages.debian.org/sid/whois'
-  url 'http://ftp.us.debian.org/debian/pool/main/w/whois/whois_5.1.3.tar.xz'
-  sha1 'b730d36359b1d7d0767414da45c2e437697949f0'
+  homepage "https://packages.debian.org/sid/whois"
+  url "http://ftp.us.debian.org/debian/pool/main/w/whois/whois_5.1.4.tar.xz"
+  sha1 "bbaabf06817e68b4c75ad8fc9d4ed2e2628cf97f"
 
-  depends_on 'xz' => :build
+  depends_on "xz" => :build
 
   def install
     system "make HAVE_ICONV=1 whois_LDADD+=-liconv whois"
