@@ -18,9 +18,7 @@ class Ed < Formula
   end
 
   test do
-    options = Tab.for_formula("ed").used_options
-    ed = options.any? {|t| t.name == "default-names"} ? "ed" : "ged"
-    system bin/ed, "--version"
+    system Dir["#{bin}/{g,}ed"].first, "--version"
   end
 
   def caveats; <<-EOS.undent
