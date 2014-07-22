@@ -2,8 +2,8 @@ require 'formula'
 
 class Lapack < Formula
   homepage 'http://www.netlib.org/lapack/'
-  url 'http://www.netlib.org/lapack/lapack-3.4.2.tgz'
-  sha1 '93a6e4e6639aaf00571d53a580ddc415416e868b'
+  url 'http://www.netlib.org/lapack/lapack-3.5.0.tgz'
+  sha1 '5870081889bf5d15fd977993daab29cf3c5ea970'
 
   depends_on :fortran
   depends_on 'cmake' => :build
