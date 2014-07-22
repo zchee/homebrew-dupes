@@ -7,6 +7,7 @@ class Openldap < Formula
 
   depends_on 'berkeley-db' => :optional
   option 'with-memberof', 'Include memberof overlay'
+  option 'with-sssvlv', 'Enable server side sorting and virtual list view'
 
   def install
     args = %W[--disable-dependency-tracking
@@ -15,6 +16,7 @@ class Openldap < Formula
               --localstatedir=#{var}]
     args << "--enable-bdb=no" << "--enable-hdb=no" if build.without? "berkeley-db"
     args << "--enable-memberof" if build.with? "memberof"
+    args << "--enable-sssvlv=yes" if build.with? "sssvlv"
 
     system "./configure", *args
     system "make install"
