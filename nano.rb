@@ -2,9 +2,9 @@ require 'formula'
 
 class Nano < Formula
   homepage 'http://www.nano-editor.org/'
-  url 'http://www.nano-editor.org/dist/v2.3/nano-2.3.4.tar.gz'
-  mirror 'http://ftp.gnu.org/gnu/nano/nano-2.3.4.tar.gz'
-  sha1 '1e315518b59755ab23f86b95786d55ebcc02941a'
+  url 'http://www.nano-editor.org/dist/v2.3/nano-2.3.6.tar.gz'
+  mirror 'http://ftp.gnu.org/gnu/nano/nano-2.3.6.tar.gz'
+  sha1 '7dd39f21bbb1ab176158e0292fd61c47ef681f6d'
 
   depends_on "homebrew/dupes/ncurses"
 
