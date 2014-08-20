@@ -40,8 +40,13 @@ class Ncurses < Formula
 
     cd lib do
       %w{form menu ncurses panel}.each do |name|
-        ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.dylib"
-        ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.#{major}.dylib"
+        if OS.mac?
+          ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.dylib"
+          ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.#{major}.dylib"
+        else
+          ln_s "lib#{name}w.so.#{major}", "lib#{name}.so"
+          ln_s "lib#{name}w.so.#{major}", "lib#{name}.so.#{major}"
+        end
         ln_s "lib#{name}w.a", "lib#{name}.a"
         ln_s "lib#{name}w_g.a", "lib#{name}_g.a"
       end
