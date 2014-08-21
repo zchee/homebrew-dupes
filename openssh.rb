@@ -5,6 +5,7 @@ class Openssh < Formula
   url 'http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.6p1.tar.gz'
   version '6.6p1'
   sha256 '48c1f0664b4534875038004cc4f3555b8329c2a81c1df48db5c517800de203bb'
+  revision 1
 
   option 'with-keychain-support', 'Add native OS X Keychain and Launch Daemon support to ssh-agent'
 
