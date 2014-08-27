@@ -29,6 +29,7 @@ class Openssh < Formula
 
     args = %W[
       --with-libedit
+      --with-pam
       --with-kerberos5
       --prefix=#{prefix}
       --sysconfdir=#{etc}/ssh
