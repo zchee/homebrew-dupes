@@ -9,6 +9,7 @@ class TclTk < Formula
   keg_only "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
 
   option 'enable-threads', 'Build with multithreading support'
+  option "without-tcllib", "Don't build tcllib (utility modules)"
   option 'without-tk', "Don't build the Tk (window toolkit)"
   option 'with-x11', 'Build X11-based Tk instead of Aqua-based Tk'
 
@@ -18,6 +19,11 @@ class TclTk < Formula
     url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tk8.6.1-src.tar.gz'
     version '8.6.1'
     sha1 'ecfcc20833c04d6890b14a7920a04d16f2123a51'
+  end
+
+  resource "tcllib" do
+    url "https://github.com/tcltk/tcllib/archive/tcllib_1_16.tar.gz"
+    sha1 "4d677337f082c3ebc2a682a3d9b2fb4639ed7d0c"
   end
 
   # sqlite won't compile on Tiger due to missing function;
@@ -83,6 +89,13 @@ class TclTk < Formula
           system "make install-private-headers"
           ln_s bin+'wish8.6', bin+'wish'
         end
+      end
+    end
+
+    if build.with? "tcllib"
+      resource("tcllib").stage do
+        system "./configure", "--prefix=#{prefix}"
+        system "make", "install"
       end
     end
   end
