@@ -1,24 +1,24 @@
-require 'formula'
+require "formula"
 
 class TclTk < Formula
-  homepage 'http://www.tcl.tk/'
-  url 'https://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tcl8.6.1-src.tar.gz'
-  version '8.6.1'
-  sha1 '5c83d44152cc0496cc0847a2495f659502a30e40'
+  homepage "http://www.tcl.tk/"
+  url "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tcl8.6.1-src.tar.gz"
+  version "8.6.1"
+  sha1 "5c83d44152cc0496cc0847a2495f659502a30e40"
 
   keg_only "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
 
-  option 'enable-threads', 'Build with multithreading support'
+  option "enable-threads", "Build with multithreading support"
   option "without-tcllib", "Don't build tcllib (utility modules)"
-  option 'without-tk', "Don't build the Tk (window toolkit)"
-  option 'with-x11', 'Build X11-based Tk instead of Aqua-based Tk'
+  option "without-tk", "Don't build the Tk (window toolkit)"
+  option "with-x11", "Build X11-based Tk instead of Aqua-based Tk"
 
   depends_on :x11 => :optional
 
-  resource 'tk' do
-    url 'http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tk8.6.1-src.tar.gz'
-    version '8.6.1'
-    sha1 'ecfcc20833c04d6890b14a7920a04d16f2123a51'
+  resource "tk" do
+    url "http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tk8.6.1-src.tar.gz"
+    version "8.6.1"
+    sha1 "ecfcc20833c04d6890b14a7920a04d16f2123a51"
   end
 
   resource "tcllib" do
@@ -35,36 +35,36 @@ class TclTk < Formula
     args << "--enable-threads" if build.include? "enable-threads"
     args << "--enable-64bit" if MacOS.prefer_64_bit?
 
-    cd 'unix' do
+    cd "unix" do
       system "./configure", *args
       system "make"
       system "make install"
       system "make install-private-headers"
-      ln_s bin+'tclsh8.6', bin+'tclsh'
+      ln_s bin+"tclsh8.6", bin+"tclsh"
     end
 
-    if build.with? 'tk'
-      ENV.prepend_path 'PATH', bin # so that tk finds our new tclsh
+    if build.with? "tk"
+      ENV.prepend_path "PATH", bin # so that tk finds our new tclsh
 
-      resource('tk').stage do
+      resource("tk").stage do
         # Upstream fix for rendering on 10.9; should be in next release
         # https://core.tcl.tk/tk/info/5a5abf71f9
         # This is an inreplace and not a patch because resources don't
         # support patches. Luckily it's a one-line fix.
-        inreplace 'macosx/tkMacOSXDraw.c',
-          '[[dcPtr->view window] enableFlushWindow];',
+        inreplace "macosx/tkMacOSXDraw.c",
+          "[[dcPtr->view window] enableFlushWindow];",
           "[[dcPtr->view window] setViewsNeedDisplay:YES];\n[[dcPtr->view window] enableFlushWindow];"
 
         # Garbage collection fix
         # https://github.com/Homebrew/homebrew-dupes/issues/286
         # patch submitted upstream by keven_walzer https://github.com/tcltk/tk/commit/0ea0476a797b97b368ab770f4514eb
-        inreplace 'macosx/Wish-Info.plist.in',
+        inreplace "macosx/Wish-Info.plist.in",
                "</dict>",
                "\t<key>NSHighResolutionCapable</key>\n\t<string>True</string>\n</dict>"
-        inreplace 'unix/configure',
+        inreplace "unix/configure",
                "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c -fobjc-gc",
                "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c"
-        inreplace 'unix/configure.in',
+        inreplace "unix/configure.in",
                "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c -fobjc-gc",
                "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c"
 
@@ -81,13 +81,13 @@ class TclTk < Formula
           args << "--without-x"
         end
 
-        cd 'unix' do
+        cd "unix" do
           system "./configure", *args
           system "make", "TK_LIBRARY=#{lib}"
           # system "make test"  # for maintainers
           system "make install"
           system "make install-private-headers"
-          ln_s bin+'wish8.6', bin+'wish'
+          ln_s bin+"wish8.6", bin+"wish"
         end
       end
     end
