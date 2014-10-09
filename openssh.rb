@@ -19,6 +19,11 @@ class Openssh < Formula
     sha1 "32e6527d7d70b3c0c9a6bd18ddd0b13ed939ea92"
   end if build.with? "keychain-support"
 
+  patch do
+    url "https://gist.githubusercontent.com/sigkate/fca7ee9fe1cdbe77ba03/raw/6894261e7838d81c76ef4b329e77e80d5ad25afc/patch-openssl-darwin-sandbox.diff"
+    sha1 "332a1831bad9f2ae0f507f7ea0aecc093829b1c4"
+  end
+
   def install
     system "autoreconf -i" if build.with? 'keychain-support'
 
@@ -26,6 +31,8 @@ class Openssh < Formula
       ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"
       ENV.append "LDFLAGS", "-framework CoreFoundation -framework SecurityFoundation -framework Security"
     end
+
+    ENV.append "CPPFLAGS", "-D__APPLE_SANDBOX_NAMED_EXTERNAL__"
 
     args = %W[
       --with-libedit
