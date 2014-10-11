@@ -21,7 +21,7 @@ class Screen < Formula
 
     # This patch is to disable the error message
     # "/var/run/utmp: No such file or directory" on launch
-    patch :p1 do
+    patch do
       url "https://gist.githubusercontent.com/yujinakayama/4608863/raw/75669072f227b82777df25f99ffd9657bd113847/gistfile1.diff"
       sha1 "93d611f1f46c7bbca5f9575304913bd1c38e183b"
     end
