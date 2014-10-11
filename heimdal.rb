@@ -4,6 +4,7 @@ class Heimdal < Formula
   homepage "http://www.h5l.org"
   url "http://www.h5l.org/dist/src/heimdal-1.6rc2.tar.gz"
   sha1 "f129ec039c7b62ea8226d907db270f1cc0bca7d3"
+  revision 1
 
   keg_only :provided_by_osx
 
