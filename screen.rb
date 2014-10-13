@@ -17,7 +17,7 @@ class Screen < Formula
   end
 
   head do
-    url "git://git.savannah.gnu.org/screen.git", :branch => "master"
+    url "git://git.savannah.gnu.org/screen.git"
 
     # This patch is to disable the error message
     # "/var/run/utmp: No such file or directory" on launch
