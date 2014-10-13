@@ -22,14 +22,18 @@ class Ncurses < Formula
 
   def install
     ENV.universal_binary if build.universal?
+    ENV['PKG_CONFIG_LIBDIR'] = "#{lib}/pkgconfig"
 
-    system "./configure", "--disable-debug",
-                          "--prefix=#{prefix}",
-                          "--mandir=#{man}",
-                          "--with-shared",
+    system "./configure", "--prefix=#{prefix}",
+                          "--enable-pc-files",
+                          "--enable-sigwinch",
+                          "--enable-symlinks",
                           "--enable-widec",
+                          "--mandir=#{man}",
                           "--with-manpage-format=normal",
-                          "--enable-symlinks"
+                          "--with-pkg-config=#{lib}/pkgconfig",
+                          "--with-shared"
+
     system "make"
     system "make install"
     make_libncurses_symlinks
