@@ -11,7 +11,7 @@ class FileFormula < Formula
 
   keg_only :provided_by_osx
 
-  # Fixed upstream, may be in next release
+  # Marked as fixed upstream, but not yet in a release
   # See http://bugs.gw.com/view.php?id=230
   patch :DATA if MacOS.version < :lion
 
