@@ -6,7 +6,8 @@ class TclTk < Formula
   version "8.6.1"
   sha1 "5c83d44152cc0496cc0847a2495f659502a30e40"
 
-  keg_only "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
+  keg_only :provided_by_osx,
+    "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
 
   option "enable-threads", "Build with multithreading support"
   option "without-tcllib", "Don't build tcllib (utility modules)"
