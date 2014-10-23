@@ -68,6 +68,11 @@ class Openssh < Formula
         to
           #{HOMEBREW_PREFIX}/bin/ssh-agent
 
+        You will need to restart or issue the following commands
+        for the changes to take effect:
+
+          launchctl unload /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
+          launchctl load /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
 
         Finally, add  these lines somewhere to your ~/.bash_profile:
           eval $(ssh-agent)
