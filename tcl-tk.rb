@@ -104,8 +104,8 @@ end
 __END__
 diff --git a/pkgs/sqlite3.7.15.1/generic/sqlite3.c b/pkgs/sqlite3.7.15.1/generic/sqlite3.c
 index e877d77..dfde114 100644
---- a/pkgs/sqlite3.7.15.1/generic/sqlite3.c
-+++ b/pkgs/sqlite3.7.15.1/generic/sqlite3.c
+--- a/pkgs/sqlite3.8.0/generic/sqlite3.c
++++ b/pkgs/sqlite3.8.0/generic/sqlite3.c
 @@ -15497,6 +15497,7 @@ SQLITE_PRIVATE void sqlite3MemSetDefault(void){
  #include <sys/sysctl.h>
  #include <malloc/malloc.h>
