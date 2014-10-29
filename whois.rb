@@ -2,8 +2,8 @@ require "formula"
 
 class Whois < Formula
   homepage "https://packages.debian.org/sid/whois"
-  url "http://ftp.us.debian.org/debian/pool/main/w/whois/whois_5.2.0.tar.xz"
-  sha1 "1678a34b7b055750ba6f10d93eaa3b6c63993645"
+  url "http://ftp.us.debian.org/debian/pool/main/w/whois/whois_5.2.1.tar.xz"
+  sha1 "26369001068507f9a7b3385512766f8d732798cd"
 
   def install
     system "make HAVE_ICONV=1 whois_LDADD+=-liconv whois"
