@@ -6,6 +6,8 @@ class Openldap < Formula
   sha256 '8267c87347103fef56b783b24877c0feda1063d3cb85d070e503d076584bf8a7'
 
   depends_on 'berkeley-db' => :optional
+  depends_on 'openssl'
+
   option 'with-memberof', 'Include memberof overlay'
   option 'with-sssvlv', 'Enable server side sorting and virtual list view'
 
