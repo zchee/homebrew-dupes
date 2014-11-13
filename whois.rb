@@ -6,6 +6,9 @@ class Whois < Formula
   sha1 "26369001068507f9a7b3385512766f8d732798cd"
 
   def install
+    # autodie was not shipped with the system perl 5.8
+    inreplace "make_version_h.pl", "use autodie;", "" if MacOS.version < :snow_leopard
+
     system "make HAVE_ICONV=1 whois_LDADD+=-liconv whois"
     bin.install "whois"
     man1.install "whois.1"
