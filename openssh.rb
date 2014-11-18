@@ -1,31 +1,39 @@
-require 'formula'
+require "formula"
 
 class Openssh < Formula
-  homepage 'http://www.openssh.com/'
-  url 'http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.6p1.tar.gz'
-  version '6.6p1'
-  sha256 '48c1f0664b4534875038004cc4f3555b8329c2a81c1df48db5c517800de203bb'
+  homepage "http://www.openssh.com/"
+  url "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.6p1.tar.gz"
+  version "6.6p1"
+  sha256 "48c1f0664b4534875038004cc4f3555b8329c2a81c1df48db5c517800de203bb"
   revision 1
 
-  option 'with-keychain-support', 'Add native OS X Keychain and Launch Daemon support to ssh-agent'
+  option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent"
 
-  depends_on 'autoconf' => :build if build.with? 'keychain-support'
-  depends_on 'openssl'
-  depends_on 'ldns' => :optional
-  depends_on 'pkg-config' => :build if build.with? "ldns"
+  depends_on "autoconf" => :build if build.with? "keychain-support"
+  depends_on "openssl"
+  depends_on "ldns" => :optional
+  depends_on "pkg-config" => :build if build.with? "ldns"
 
-  patch do
-    url "https://gist.githubusercontent.com/Bluerise/9400603/raw/28b1cabcc468ce67a41b866eec03032d814a8c18/OpenSSH+6.6p1+keychain+support"
-    sha1 "32e6527d7d70b3c0c9a6bd18ddd0b13ed939ea92"
-  end if build.with? "keychain-support"
+  if build.with? "keychain-support"
+    patch do
+      url "https://gist.githubusercontent.com/Bluerise/9400603/raw/28b1cabcc468ce67a41b866eec03032d814a8c18/OpenSSH+6.6p1+keychain+support"
+      sha1 "32e6527d7d70b3c0c9a6bd18ddd0b13ed939ea92"
+    end
+  end
 
   patch do
     url "https://gist.githubusercontent.com/sigkate/fca7ee9fe1cdbe77ba03/raw/6894261e7838d81c76ef4b329e77e80d5ad25afc/patch-openssl-darwin-sandbox.diff"
     sha1 "332a1831bad9f2ae0f507f7ea0aecc093829b1c4"
   end
 
+  # Patch for SSH tunnelling issues caused by launchd changes on Yosemite
+  patch do
+    url "https://trac.macports.org/export/128279/trunk/dports/net/openssh/files/launchd.patch"
+    sha1 "e35731b6d0e999fb1d58362cda2574c0d1efed78"
+  end
+
   def install
-    system "autoreconf -i" if build.with? 'keychain-support'
+    system "autoreconf -i" if build.with? "keychain-support"
 
     if build.with? "keychain-support"
       ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"
@@ -47,7 +55,7 @@ class Openssh < Formula
 
     system "./configure", *args
     system "make"
-    system "make install"
+    system "make", "install"
   end
 
   def caveats
