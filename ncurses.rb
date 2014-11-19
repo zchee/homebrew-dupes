@@ -22,7 +22,9 @@ class Ncurses < Formula
 
   def install
     ENV.universal_binary if build.universal?
+
     ENV['PKG_CONFIG_LIBDIR'] = "#{lib}/pkgconfig"
+    (lib/"pkgconfig").mkpath
 
     system "./configure", "--prefix=#{prefix}",
                           "--enable-pc-files",
@@ -31,7 +33,6 @@ class Ncurses < Formula
                           "--enable-widec",
                           "--mandir=#{man}",
                           "--with-manpage-format=normal",
-                          "--with-pkg-config=#{lib}/pkgconfig",
                           "--with-shared"
 
     system "make"
