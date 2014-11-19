@@ -19,7 +19,7 @@ class Groff < Formula
   end
 
   resource 'gpresent' do
-    url 'http://www.science.uva.nl/~bobd/useful/gpresent/gpresent-2.3.tar.gz'
+    url 'https://staff.fnwi.uva.nl/b.diertens/useful/gpresent/gpresent-2.3.tar.gz'
     sha1 '7d38165ad87ce418458275d0c04388dd0c651431'
   end
 
