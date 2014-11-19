@@ -60,6 +60,8 @@ class Openssh < Formula
 
   def caveats
     if build.with? "keychain-support" then <<-EOS.undent
+        NOTE: replace system daemons is unsupported. Proceed at your own risk.
+
         For complete functionality, please modify:
           /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
 
