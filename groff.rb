@@ -10,14 +10,13 @@ class Groff < Formula
   option 'with-grohtml', 'Enable HTML output support (implies --with-gropdf)'
   option 'with-gpresent', 'Install macros for the presentations document format'
 
-  # gs needed for both PDF and HTML output
-  depends_on 'ghostscript' if (build.with? 'gropdf' or build.with? 'grohtml')
-  # To support HTML/XHTML output, ./configure looks for `pnmcut',
-  # `pnmcrop', `pnmtopng', `psselect', and `pnmtops'. HTML/XHTML may
-  # still work without these, but only if the output doesn't include
-  # tables, images, or other graphical elements.
-  depends_on 'netpbm' if build.with? 'grohtml'
-  depends_on 'psutils' if build.with? 'grohtml'
+  if build.with? "grohtml"
+    depends_on "ghostscript"
+    depends_on "netpbm"
+    depends_on "psutils"
+  elsif build.with? "gropdf"
+    depends_on "ghostscript"
+  end
 
   resource 'gpresent' do
     url 'http://www.science.uva.nl/~bobd/useful/gpresent/gpresent-2.3.tar.gz'
