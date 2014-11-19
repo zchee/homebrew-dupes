@@ -9,14 +9,14 @@ class Nano < Formula
   devel do
     url 'http://www.nano-editor.org/dist/v2.3/nano-2.3.6.tar.gz'
     sha1 '7dd39f21bbb1ab176158e0292fd61c47ef681f6d'
+
+    # Fixes regex in the default nanorc.nanorc; fixed upstream:
+    # http://savannah.gnu.org/bugs/index.php?42929
+    patch :DATA
   end
 
   depends_on "gettext"
   depends_on "homebrew/dupes/ncurses"
-
-  # Fixes regex in the default nanorc.nanorc; fixed upstream:
-  # http://savannah.gnu.org/bugs/index.php?42929
-  patch :DATA if build.devel?
 
   def install
     system "./configure", "--disable-debug",
@@ -29,12 +29,12 @@ class Nano < Formula
                           "--enable-nanorc",
                           "--disable-nls",
                           "--enable-utf8",
-                          "--with-ncurses=#{HOMEBREW_PREFIX}"
+                          "--with-ncurses=#{Formula["homebrew/dupes/ncurses"].opt_prefix}"
     system "make install"
   end
 
   test do
-    system "nano", "--version"
+    system "#{bin}/nano", "--version"
   end
 end
 
