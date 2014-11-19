@@ -15,6 +15,7 @@ class Nano < Formula
     patch :DATA
   end
 
+  depends_on "pkg-config" => :build
   depends_on "gettext"
   depends_on "homebrew/dupes/ncurses"
 
@@ -28,8 +29,7 @@ class Nano < Formula
                           "--enable-multibuffer",
                           "--enable-nanorc",
                           "--disable-nls",
-                          "--enable-utf8",
-                          "--with-ncurses=#{Formula["homebrew/dupes/ncurses"].opt_prefix}"
+                          "--enable-utf8"
     system "make install"
   end
 
