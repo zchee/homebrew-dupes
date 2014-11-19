@@ -2,9 +2,9 @@ require "formula"
 
 class TclTk < Formula
   homepage "http://www.tcl.tk/"
-  url "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tcl8.6.1-src.tar.gz"
-  version "8.6.1"
-  sha1 "5c83d44152cc0496cc0847a2495f659502a30e40"
+  url "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.3/tcl8.6.3-src.tar.gz"
+  version "8.6.3"
+  sha1 "026b4b6330205bdc49af12332ee17c2b01f76d37"
 
   keg_only :provided_by_osx,
     "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
@@ -17,9 +17,9 @@ class TclTk < Formula
   depends_on :x11 => :optional
 
   resource "tk" do
-    url "http://downloads.sourceforge.net/project/tcl/Tcl/8.6.1/tk8.6.1-src.tar.gz"
-    version "8.6.1"
-    sha1 "ecfcc20833c04d6890b14a7920a04d16f2123a51"
+    url "http://downloads.sourceforge.net/project/tcl/Tcl/8.6.3/tk8.6.3-src.tar.gz"
+    version "8.6.3"
+    sha1 "244ddc0f64cc3d429c9d86135d0bbe2cf06c9360"
   end
 
   resource "tcllib" do
@@ -48,30 +48,7 @@ class TclTk < Formula
       ENV.prepend_path "PATH", bin # so that tk finds our new tclsh
 
       resource("tk").stage do
-        # Upstream fix for rendering on 10.9; should be in next release
-        # https://core.tcl.tk/tk/info/5a5abf71f9
-        # This is an inreplace and not a patch because resources don't
-        # support patches. Luckily it's a one-line fix.
-        inreplace "macosx/tkMacOSXDraw.c",
-          "[[dcPtr->view window] enableFlushWindow];",
-          "[[dcPtr->view window] setViewsNeedDisplay:YES];\n[[dcPtr->view window] enableFlushWindow];"
-
-        # Garbage collection fix
-        # https://github.com/Homebrew/homebrew-dupes/issues/286
-        # patch submitted upstream by keven_walzer https://github.com/tcltk/tk/commit/0ea0476a797b97b368ab770f4514eb
-        inreplace "macosx/Wish-Info.plist.in",
-               "</dict>",
-               "\t<key>NSHighResolutionCapable</key>\n\t<string>True</string>\n</dict>"
-        inreplace "unix/configure",
-               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c -fobjc-gc",
-               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c"
-        inreplace "unix/configure.in",
-               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c -fobjc-gc",
-               "EXTRA_CC_SWITCHES='-std=gnu99 -x objective-c"
-
-        args = ["--prefix=#{prefix}",  # this is the prefix from TclTk
-                "--mandir=#{man}",
-                "--with-tcl=#{lib}"]
+        args = ["--prefix=#{prefix}", "--mandir=#{man}", "--with-tcl=#{lib}"]
         args << "--enable-threads" if build.include? "enable-threads"
         args << "--enable-64bit" if MacOS.prefer_64_bit?
 
@@ -103,11 +80,11 @@ class TclTk < Formula
 end
 
 __END__
-diff --git a/pkgs/sqlite3.7.15.1/generic/sqlite3.c b/pkgs/sqlite3.7.15.1/generic/sqlite3.c
-index e877d77..dfde114 100644
---- a/pkgs/sqlite3.8.0/generic/sqlite3.c
-+++ b/pkgs/sqlite3.8.0/generic/sqlite3.c
-@@ -15497,6 +15497,7 @@ SQLITE_PRIVATE void sqlite3MemSetDefault(void){
+diff --git a/pkgs/sqlite3.8.7.1/generic/sqlite3.c b/pkgs/sqlite3.8.7.1/generic/sqlite3.c
+index 5c8e1c1..bb3fdfc 100644
+--- a/pkgs/sqlite3.8.7.1/generic/sqlite3.c
++++ b/pkgs/sqlite3.8.7.1/generic/sqlite3.c
+@@ -16505,6 +16505,7 @@ SQLITE_PRIVATE void sqlite3MemSetDefault(void){
  #include <sys/sysctl.h>
  #include <malloc/malloc.h>
  #include <libkern/OSAtomic.h>
@@ -115,7 +92,7 @@ index e877d77..dfde114 100644
  static malloc_zone_t* _sqliteZone_;
  #define SQLITE_MALLOC(x) malloc_zone_malloc(_sqliteZone_, (x))
  #define SQLITE_FREE(x) malloc_zone_free(_sqliteZone_, (x));
-@@ -15504,6 +15505,29 @@ static malloc_zone_t* _sqliteZone_;
+@@ -16512,6 +16513,29 @@ static malloc_zone_t* _sqliteZone_;
  #define SQLITE_MALLOCSIZE(x) \
          (_sqliteZone_ ? _sqliteZone_->size(_sqliteZone_,x) : malloc_size(x))
  
@@ -145,12 +122,12 @@ index e877d77..dfde114 100644
  #else /* if not __APPLE__ */
  
  /*
-@@ -15664,7 +15688,7 @@ static int sqlite3MemInit(void *NotUsed){
+@@ -16698,7 +16722,7 @@ static int sqlite3MemInit(void *NotUsed){
      malloc_zone_t* newzone = malloc_create_zone(4096, 0);
      malloc_set_zone_name(newzone, "Sqlite_Heap");
      do{
 -      success = OSAtomicCompareAndSwapPtrBarrier(NULL, newzone, 
-+      success = fc_atomic_ptr_cmpexch(NULL, newzone, 
++      success = fc_atomic_ptr_cmpexch(NULL, newzone,
                                   (void * volatile *)&_sqliteZone_);
      }while(!_sqliteZone_);
      if( !success ){
