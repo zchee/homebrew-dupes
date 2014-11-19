@@ -6,12 +6,6 @@ class Groff < Formula
   mirror 'http://ftp.gnu.org/gnu/groff/groff-1.22.2.tar.gz'
   sha1 '37223941e25bb504bf54631daaabb01b147dc1d3'
 
-  # TODO: Add option for using system's ghostscript instead of
-  # installing homebrewed version. That allows this to play nice with,
-  # e.g., MacTex (which install its own ghostscript.)  The ./configure
-  # option --with-gs=PATH may be of use. We could also set ghostscript
-  # as build-only dependency, though that may cause groff to always look
-  # at that (temp) path for gs.
   option 'with-gropdf', 'Enable PDF output support'
   option 'with-grohtml', 'Enable HTML output support (implies --with-gropdf)'
   option 'with-gpresent', 'Install macros for the presentations document format'
