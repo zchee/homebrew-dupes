@@ -2,9 +2,9 @@ require 'formula'
 
 class Groff < Formula
   homepage 'http://www.gnu.org/software/groff/'
-  url 'http://ftpmirror.gnu.org/groff/groff-1.22.2.tar.gz'
-  mirror 'http://ftp.gnu.org/gnu/groff/groff-1.22.2.tar.gz'
-  sha1 '37223941e25bb504bf54631daaabb01b147dc1d3'
+  url 'http://ftpmirror.gnu.org/groff/groff-1.22.3.tar.gz'
+  mirror 'http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz'
+  sha1 '61a6808ea1ef715df9fa8e9b424e1f6b9fa8c091'
 
   option 'with-gropdf', 'Enable PDF output support'
   option 'with-grohtml', 'Enable HTML output support (implies --with-gropdf)'
@@ -24,6 +24,8 @@ class Groff < Formula
   end
 
   def install
+    ENV.deparallelize # To workaround a bug; remove when new version
+                      # comes out. https://savannah.gnu.org/bugs/index.php?43581
     system "./configure", "--prefix=#{prefix}", "--without-x"
     system "make" # Separate steps required
     system "make install"
