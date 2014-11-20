@@ -23,9 +23,9 @@ class Groff < Formula
     sha1 '7d38165ad87ce418458275d0c04388dd0c651431'
   end
 
+  patch :DATA # fix parallel build, https://savannah.gnu.org/bugs/index.php?43581
+
   def install
-    ENV.deparallelize # To workaround a bug; remove when new version
-                      # comes out. https://savannah.gnu.org/bugs/index.php?43581
     system "./configure", "--prefix=#{prefix}", "--without-x"
     system "make" # Separate steps required
     system "make install"
@@ -48,3 +48,18 @@ class Groff < Formula
     EOS
   end
 end
+
+__END__
+diff --git a/Makefile.in b/Makefile.in
+index bc156ce..70c6f85 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -896,6 +896,8 @@ $(GNULIBDIRS): FORCE
+ 	  $(MAKE) ACLOCAL=: AUTOCONF=: AUTOHEADER=: AUTOMAKE=: $(do) ;; \
+ 	esac
+ 
++$(SHPROGDIRS): $(PROGDEPDIRS)
++
+ $(OTHERDIRS): $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS) $(SHPROGDIRS)
+ 
+ $(INCDIRS) $(PROGDEPDIRS) $(SHPROGDIRS) $(OTHERDIRS): FORCE
