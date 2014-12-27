@@ -11,6 +11,11 @@ class Lsof < Formula
     system "tar", "xf", "lsof_#{version}_src.tar"
 
     cd "lsof_#{version}_src" do
+      # Source hardcodes header full header paths at /usr/include
+      inreplace %w[dialects/darwin/kmem/dlsof.h dialects/darwin/kmem/machine.h
+                   dialects/darwin/libproc/machine.h],
+                "/usr/include", MacOS.sdk_path.to_s + "/usr/include"
+
       mv "00README", "../README"
       system "./Configure", "-n", "darwin"
       system "make"
