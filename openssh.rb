@@ -2,10 +2,9 @@ require "formula"
 
 class Openssh < Formula
   homepage "http://www.openssh.com/"
-  url "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.6p1.tar.gz"
-  version "6.6p1"
-  sha256 "48c1f0664b4534875038004cc4f3555b8329c2a81c1df48db5c517800de203bb"
-  revision 1
+  url "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.7p1.tar.gz"
+  version "6.7p1"
+  sha256 "b2f8394eae858dabbdef7dac10b99aec00c95462753e80342e530bbb6f725507"
 
   option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent"
 
@@ -16,8 +15,8 @@ class Openssh < Formula
 
   if build.with? "keychain-support"
     patch do
-      url "https://gist.githubusercontent.com/Bluerise/9400603/raw/28b1cabcc468ce67a41b866eec03032d814a8c18/OpenSSH+6.6p1+keychain+support"
-      sha1 "32e6527d7d70b3c0c9a6bd18ddd0b13ed939ea92"
+      url "https://trac.macports.org/export/131258/trunk/dports/net/openssh/files/0002-Apple-keychain-integration-other-changes.patch"
+      sha1 "ceafaee8814d4ce7477d2c75cddc7e3b209f038a"
     end
   end
 
@@ -28,7 +27,7 @@ class Openssh < Formula
 
   # Patch for SSH tunnelling issues caused by launchd changes on Yosemite
   patch do
-    url "https://trac.macports.org/export/128279/trunk/dports/net/openssh/files/launchd.patch"
+    url "https://trac.macports.org/export/131258/trunk/dports/net/openssh/files/launchd.patch"
     sha1 "e35731b6d0e999fb1d58362cda2574c0d1efed78"
   end
 
