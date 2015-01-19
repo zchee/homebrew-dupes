@@ -1,9 +1,7 @@
-require 'formula'
-
 class Libiconv < Formula
-  homepage 'http://www.gnu.org/software/libiconv/'
+  homepage 'https://www.gnu.org/software/libiconv/'
   url 'http://ftpmirror.gnu.org/libiconv/libiconv-1.14.tar.gz'
-  mirror 'http://ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz'
+  mirror 'https://ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz'
   sha1 'be7d67e50d72ff067b2c0291311bc283add36965'
 
   keg_only :provided_by_osx

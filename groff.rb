@@ -1,9 +1,7 @@
-require 'formula'
-
 class Groff < Formula
-  homepage 'http://www.gnu.org/software/groff/'
+  homepage 'https://www.gnu.org/software/groff/'
   url 'http://ftpmirror.gnu.org/groff/groff-1.22.3.tar.gz'
-  mirror 'http://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz'
+  mirror 'https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz'
   sha1 '61a6808ea1ef715df9fa8e9b424e1f6b9fa8c091'
 
   option 'with-gropdf', 'Enable PDF output support'

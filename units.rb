@@ -1,9 +1,7 @@
-require 'formula'
-
 class Units < Formula
-  homepage 'http://www.gnu.org/software/units/'
+  homepage 'https://www.gnu.org/software/units/'
   url 'http://ftpmirror.gnu.org/units/units-2.01.tar.gz'
-  mirror 'http://ftp.gnu.org/gnu/units/units-2.01.tar.gz'
+  mirror 'https://ftp.gnu.org/gnu/units/units-2.01.tar.gz'
   sha1 '80e7f1a2e70769bfac93702924871843b85f12d4'
 
   keg_only :provided_by_osx,
