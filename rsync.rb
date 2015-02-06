@@ -1,9 +1,8 @@
-require 'formula'
-
 class Rsync < Formula
-  homepage 'https://rsync.samba.org/'
-  url 'https://rsync.samba.org/ftp/rsync/rsync-3.1.1.tar.gz'
-  sha1 'c84faba04f721d393feccfa0476bfeed9b5b5250'
+  homepage "https://rsync.samba.org/"
+  url "https://rsync.samba.org/ftp/rsync/rsync-3.1.1.tar.gz"
+  mirror "https://mirrors.kernel.org/debian/pool/main/r/rsync/rsync_3.1.1.orig.tar.gz"
+  sha1 "c84faba04f721d393feccfa0476bfeed9b5b5250"
 
   depends_on "autoconf" => :build
 
@@ -29,6 +28,10 @@ class Rsync < Formula
                           "--with-rsyncd-conf=#{etc}/rsyncd.conf",
                           "--enable-ipv6"
     system "make"
-    system "make install"
+    system "make", "install"
+  end
+
+  test do
+    system bin/"rsync", "--version"
   end
 end
