@@ -55,11 +55,21 @@ class Ncurses < Formula
       end
 
       ln_s "libncurses++w.a", "libncurses++.a"
+      ln_s "libncurses.a", "libcurses.a"
+      if OS.mac?
+        ln_s "libncurses.dylib", "libcurses.dylib"
+      else
+        ln_s "libncurses.so", "libcurses.so"
+      end
     end
 
     cd bin do
       ln_s "ncursesw#{major}-config", "ncurses#{major}-config"
     end
+
+    ln_s [
+      "ncursesw/curses.h", "ncursesw/form.h", "ncursesw/ncurses.h",
+      "ncursesw/term.h", "ncursesw/termcap.h"], include
   end
 end
 
