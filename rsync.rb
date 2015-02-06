@@ -4,6 +4,14 @@ class Rsync < Formula
   mirror "https://mirrors.kernel.org/debian/pool/main/r/rsync/rsync_3.1.1.orig.tar.gz"
   sha1 "c84faba04f721d393feccfa0476bfeed9b5b5250"
 
+  bottle do
+    root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
+    cellar :any
+    sha1 "cf5893932a9dbe9b2b48940f1842143e0580d4b3" => :yosemite
+    sha1 "c1981da705dd7ab4ebd4cfb31646b1f7dbe7a771" => :mavericks
+    sha1 "39f694183b78f127511a011bc5bd6becff2d9993" => :mountain_lion
+  end
+
   depends_on "autoconf" => :build
 
   patch do
