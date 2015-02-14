@@ -2,6 +2,7 @@ class Bzip2 < Formula
   homepage "http://www.bzip.org/"
   url "http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz"
   sha1 "3f89f861209ce81a6bab1fd1998c0ef311712002"
+  revision 1
 
   bottle do
     root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
@@ -14,8 +15,7 @@ class Bzip2 < Formula
 
   def install
     system "make", "install", "PREFIX=#{prefix}"
-    mkdir_p man
-    mv "#{prefix}/man", man
+    share.install "#{prefix}/man"
   end
 
   test do
