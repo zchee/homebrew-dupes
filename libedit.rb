@@ -10,6 +10,7 @@ class Libedit < Formula
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
+                          "--enable-widec",
                           "--prefix=#{prefix}"
     system "make", "install"
   end
