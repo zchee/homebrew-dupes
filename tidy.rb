@@ -8,6 +8,14 @@ class Tidy < Formula
     depends_on "automake" => :build
     depends_on "libtool" => :build
   end
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    cellar :any
+    sha256 "5d7af2612e3a655e0175c0e211e62c0e67fff96b09e4fe4a656110e4c56c38cc" => :yosemite
+    sha256 "4981468de3c4ad2b1782a0696f7ed1a5cb83d100636d344bdfb0390040a218ed" => :mavericks
+    sha256 "7ba5a97814d0f73385dcdd2431bcbc3376f43246448e43c2abe340335a14352b" => :mountain_lion
+  end
+
 
   head do
     url "https://github.com/w3c/tidy-html5.git"
