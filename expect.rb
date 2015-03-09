@@ -37,6 +37,7 @@ class Expect < Formula
     system "./configure", *args
     system "make"
     system "make install"
+    lib.install_symlink Dir[lib/"expect*/libexpect*"]
   end
 
   test do
