@@ -3,6 +3,14 @@ class Xar < Formula
   url "https://xar.googlecode.com/files/xar-1.5.2.tar.gz"
   sha256 "4c5d5682803cdfab16d72365cf51fc4075d597c5eeaa8c7d1990fea98cdae3e6"
 
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    cellar :any
+    sha256 "bbfa085a98db775ad409b2c269d243cbb72b174217548032e8574815409787d2" => :yosemite
+    sha256 "c8365275e6eca371ae338b192ec5d281ebb95ba93c4a7d92ee34044951ac3c23" => :mavericks
+    sha256 "1a78012dc77213f699d3dc4f061b9fe5add0c6a53699dcec69b31ce1cb72e7fa" => :mountain_lion
+  end
+
   depends_on "openssl"
 
   keg_only :provided_by_osx
