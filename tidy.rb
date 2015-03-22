@@ -1,5 +1,6 @@
 class Tidy < Formula
-  homepage "http://tidy.sourceforge.net/"
+  homepage "http://www.html-tidy.org/"
+
   stable do
     url "ftp://mirror.internode.on.net/pub/gentoo/distfiles/tidy-20090325.tar.bz2"
     sha1 "28c000a2cd40262fc0d7c2c429eb2a09b2df7bf4"
@@ -8,6 +9,7 @@ class Tidy < Formula
     depends_on "automake" => :build
     depends_on "libtool" => :build
   end
+
   bottle do
     root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
@@ -16,9 +18,7 @@ class Tidy < Formula
     sha256 "7ba5a97814d0f73385dcdd2431bcbc3376f43246448e43c2abe340335a14352b" => :mountain_lion
   end
 
-
   head do
-    # Head homepage is now "http://www.html-tidy.org/".
     url "https://github.com/htacg/tidy-html5.git"
 
     depends_on "cmake" => :build
@@ -37,7 +37,7 @@ class Tidy < Formula
         system "cmake", "../..", *std_cmake_args
         system "make", "install"
       end
-      # Binary is now named 'tidy5' so symlink it to 'tidy'.
+
       bin.install_symlink "tidy5" => "tidy"
     end
   end
