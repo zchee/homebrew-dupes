@@ -18,7 +18,8 @@ class Tidy < Formula
 
 
   head do
-    url "https://github.com/w3c/tidy-html5.git"
+    # Head homepage is now "http://www.html-tidy.org/".
+    url "https://github.com/htacg/tidy-html5.git"
 
     depends_on "cmake" => :build
   end
@@ -36,6 +37,8 @@ class Tidy < Formula
         system "cmake", "../..", *std_cmake_args
         system "make", "install"
       end
+      # Binary is now named 'tidy5' so symlink it to 'tidy'.
+      bin.install_symlink "tidy5" => "tidy"
     end
   end
 end
