@@ -1,9 +1,9 @@
-require "formula"
-
 class Whois < Formula
   homepage "https://packages.debian.org/sid/whois"
-  url "http://ftp.us.debian.org/debian/pool/main/w/whois/whois_5.2.3.tar.xz"
-  sha1 "6e9738e5b181ed600567d2ddb3b5e872d08201f0"
+  url "https://mirrors.kernel.org/debian/pool/main/w/whois/whois_5.2.7.tar.xz"
+  mirror "https://mirrors.ocf.berkeley.edu/debian/pool/main/w/whois/whois_5.2.7.tar.xz"
+  sha256 "c5536161a26c28ea0de03fafc065b5ce1b272a8ad2b44bf5784e7e802e61f239"
+  head "https://github.com/rfc1036/whois.git"
 
   bottle do
     root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
@@ -17,7 +17,7 @@ class Whois < Formula
     # autodie was not shipped with the system perl 5.8
     inreplace "make_version_h.pl", "use autodie;", "" if MacOS.version < :snow_leopard
 
-    system "make HAVE_ICONV=1 whois_LDADD+=-liconv whois"
+    system "make", "HAVE_ICONV=1", "whois_LDADD+=-liconv", "whois"
     bin.install "whois"
     man1.install "whois.1"
   end
@@ -29,6 +29,6 @@ class Whois < Formula
   end
 
   test do
-    system "#{bin}/whois --version"
+    system "#{bin}/whois", "brew.sh"
   end
 end
