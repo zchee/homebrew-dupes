@@ -6,11 +6,11 @@ class Whois < Formula
   head "https://github.com/rfc1036/whois.git"
 
   bottle do
-    root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
+    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
-    sha1 "5d87f8328466ed9b9b8a59e1486c26b58d7da45d" => :yosemite
-    sha1 "8c22dda5e3bc601d26c933254b5d97b8f90db3c4" => :mavericks
-    sha1 "4134fa42e1410fad594e688079ee59f679f4f429" => :mountain_lion
+    sha256 "24081efbc758c5bcf03b98f8abb37396c7473fa1378732d53c486fd3639584e2" => :yosemite
+    sha256 "c4d134beeb590af732c4a0ceea5d5add7cb6ed5fd73b4b416bd4e1da750ede14" => :mavericks
+    sha256 "4df8c9210b3b088ed9029e6ae09fd5b2b62499d8acf03b07ff179d5a92a90a1d" => :mountain_lion
   end
 
   def install
