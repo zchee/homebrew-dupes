@@ -5,6 +5,14 @@ class Nano < Formula
   url 'http://www.nano-editor.org/dist/v2.4/nano-2.4.0.tar.gz'
   sha1 '55639cbac2d38febf16780b912b036f2023534d1'
   head 'svn://svn.sv.gnu.org/nano/trunk/nano'
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    cellar :any
+    sha256 "07b30e22f69316405f54c9ff3d89a2a1d51d0ee6a4aac8a7a6f11a9e48c1e357" => :yosemite
+    sha256 "9d366dc0b1f08fe5de353730091eaf8ece41199ab058f9d2875d1ca77cc92c70" => :mavericks
+    sha256 "c600e37f85012c4b2369cbab556627f116e1de35b7f211baf33326ad1da5edcf" => :mountain_lion
+  end
+
   # see https://savannah.gnu.org/bugs/?44609
   patch :DATA
 
