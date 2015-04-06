@@ -6,6 +6,13 @@ class Openssh < Formula
   version "6.8p1"
   sha256 "3ff64ce73ee124480b5bf767b9830d7d3c03bbcb6abe716b78f0192c37ce160e"
 
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    sha256 "d8b11af1030a8b73240b1b780971cdc8e2e14d29d91744e6c2d17a726e1b81bf" => :yosemite
+    sha256 "75a3448223d8e63e24a3755091a46151070ff93c7c89a7c3b4aaa1287a8bbcad" => :mavericks
+    sha256 "0112148ed980edb2288e4ef4a07952c7203d452d3b4858d13f11f2815c115e84" => :mountain_lion
+  end
+
   option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent"
 
   depends_on "autoconf" => :build if build.with? "keychain-support"
