@@ -4,6 +4,13 @@ class TclTk < Formula
   version "8.6.4"
   sha256 "9e6ed94c981c1d0c5f5fefb8112d06c6bf4d050a7327e95e71d417c416519c8d"
 
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    sha256 "9a89ceec44ce0369e72e7050f4cda2e8e7db2f8c4aaa60333d7116bbc2d51647" => :yosemite
+    sha256 "043e4702df888d94e3ba146d84347633ed6d199153d41ab1d701d5242bcf083d" => :mavericks
+    sha256 "f9d611d25c4896f57f5c2ec5408a19270aab1603f121bca9e1dad46d7352859c" => :mountain_lion
+  end
+
   keg_only :provided_by_osx,
     "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
 
