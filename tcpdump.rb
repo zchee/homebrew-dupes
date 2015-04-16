@@ -1,11 +1,9 @@
-require "formula"
-
 class Tcpdump < Formula
   homepage "http://www.tcpdump.org/"
-  url "http://www.tcpdump.org/release/tcpdump-4.6.2.tar.gz"
-  sha1 "7256c47e572229de8c92f070514c1f6e6bb691d4"
+  url "http://www.tcpdump.org/release/tcpdump-4.7.3.tar.gz"
+  sha256 "1f87fb652ce996d41e7a06c601bc6ea29b13fee922945b23770c29490f1d8ace"
 
-  head "git://bpf.tcpdump.org/tcpdump"
+  head "https://github.com/the-tcpdump-group/tcpdump.git"
 
   depends_on "homebrew/dupes/libpcap" => :optional
   depends_on "openssl"
@@ -16,5 +14,9 @@ class Tcpdump < Formula
                           "--disable-smb",
                           "--disable-universal"
     system "make", "install"
+  end
+
+  test do
+    system sbin/"tcpdump", "--help"
   end
 end
