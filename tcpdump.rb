@@ -5,6 +5,14 @@ class Tcpdump < Formula
 
   head "https://github.com/the-tcpdump-group/tcpdump.git"
 
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    cellar :any
+    sha256 "7512e22e9879515f92613f03ffb7fd0f81803bff91ab3baf21adeb48f1425574" => :yosemite
+    sha256 "24e411be0b985c24f5d0acabe92962ccdd417a14bb8cc978b708052579093dce" => :mavericks
+    sha256 "6da076e421f7c30961795281e57e68f43b5405f071d409ce557ba1fe09fb7ae5" => :mountain_lion
+  end
+
   depends_on "homebrew/dupes/libpcap" => :optional
   depends_on "openssl"
 
