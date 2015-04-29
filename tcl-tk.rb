@@ -90,11 +90,11 @@ class TclTk < Formula
 end
 
 __END__
-diff --git a/pkgs/sqlite3.8.7.1/generic/sqlite3.c b/pkgs/sqlite3.8.7.1/generic/sqlite3.c
-index 5c8e1c1..bb3fdfc 100644
---- a/pkgs/sqlite3.8.7.1/generic/sqlite3.c
-+++ b/pkgs/sqlite3.8.7.1/generic/sqlite3.c
-@@ -16505,6 +16505,7 @@ SQLITE_PRIVATE void sqlite3MemSetDefault(void){
+diff --git a/pkgs/sqlite3.8.8.3/generic/sqlite3.c b/pkgs/sqlite3.8.8.3/generic/sqlite3.c
+index 7d513fa..b1d968a 100644
+--- a/pkgs/sqlite3.8.8.3/generic/sqlite3.c
++++ b/pkgs/sqlite3.8.8.3/generic/sqlite3.c
+@@ -16805,6 +16805,7 @@ SQLITE_PRIVATE void sqlite3MemSetDefault(void){
  #include <sys/sysctl.h>
  #include <malloc/malloc.h>
  #include <libkern/OSAtomic.h>
@@ -102,10 +102,10 @@ index 5c8e1c1..bb3fdfc 100644
  static malloc_zone_t* _sqliteZone_;
  #define SQLITE_MALLOC(x) malloc_zone_malloc(_sqliteZone_, (x))
  #define SQLITE_FREE(x) malloc_zone_free(_sqliteZone_, (x));
-@@ -16512,6 +16513,29 @@ static malloc_zone_t* _sqliteZone_;
+@@ -16812,6 +16813,29 @@ static malloc_zone_t* _sqliteZone_;
  #define SQLITE_MALLOCSIZE(x) \
          (_sqliteZone_ ? _sqliteZone_->size(_sqliteZone_,x) : malloc_size(x))
-
+ 
 +/*
 +** If compiling for Mac OS X 10.4, the OSAtomicCompareAndSwapPtrBarrier
 +** function will not be available, but individual 32-bit and 64-bit
@@ -130,13 +130,13 @@ index 5c8e1c1..bb3fdfc 100644
 +#endif
 +
  #else /* if not __APPLE__ */
-
+ 
  /*
-@@ -16698,7 +16722,7 @@ static int sqlite3MemInit(void *NotUsed){
+@@ -16998,7 +17022,7 @@ static int sqlite3MemInit(void *NotUsed){
      malloc_zone_t* newzone = malloc_create_zone(4096, 0);
      malloc_set_zone_name(newzone, "Sqlite_Heap");
      do{
--      success = OSAtomicCompareAndSwapPtrBarrier(NULL, newzone,
+-      success = OSAtomicCompareAndSwapPtrBarrier(NULL, newzone, 
 +      success = fc_atomic_ptr_cmpexch(NULL, newzone,
                                   (void * volatile *)&_sqliteZone_);
      }while(!_sqliteZone_);
