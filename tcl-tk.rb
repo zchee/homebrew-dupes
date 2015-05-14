@@ -15,6 +15,8 @@ class TclTk < Formula
   keg_only :provided_by_osx,
     "Tk installs some X11 headers and OS X provides an (older) Tcl/Tk."
 
+  deprecated_option "enable-threads" => "with-threads"
+
   option "with-threads", "Build with multithreading support"
   option "without-tcllib", "Don't build tcllib (utility modules)"
   option "without-tk", "Don't build the Tk (window toolkit)"
