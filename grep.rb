@@ -1,5 +1,3 @@
-require "formula"
-
 class Grep < Formula
   homepage "https://www.gnu.org/software/grep/"
   url "http://ftpmirror.gnu.org/grep/grep-2.21.tar.xz"
@@ -34,7 +32,8 @@ class Grep < Formula
   def caveats
     if build.without? "default-names" then <<-EOS.undent
       The command has been installed with the prefix "g".
-      If you do not want the prefix, install using the "default-names" option.
+      If you do not want the prefix, install using the "with-default-names"
+      option.
       EOS
     end
   end
