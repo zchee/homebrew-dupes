@@ -6,9 +6,10 @@ class TclTk < Formula
 
   bottle do
     root_url "https://homebrew.bintray.com/bottles-dupes"
-    sha256 "9a89ceec44ce0369e72e7050f4cda2e8e7db2f8c4aaa60333d7116bbc2d51647" => :yosemite
-    sha256 "043e4702df888d94e3ba146d84347633ed6d199153d41ab1d701d5242bcf083d" => :mavericks
-    sha256 "f9d611d25c4896f57f5c2ec5408a19270aab1603f121bca9e1dad46d7352859c" => :mountain_lion
+    revision 1
+    sha256 "67e333aa50b44e7b73d04483a03effb8704c8193be629104b64b10c064f9e36f" => :yosemite
+    sha256 "3e0bf324de3720eff78fd2e06e3a6037c73fe77575c53cd7a3ad28f147857be9" => :mavericks
+    sha256 "cf6ca88f6cf377e6b53a8ff15d4d47443aa68a839bc3e749f7ce081a0e03af75" => :mountain_lion
   end
 
   keg_only :provided_by_osx,
