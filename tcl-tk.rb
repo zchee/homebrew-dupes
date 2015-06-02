@@ -28,8 +28,8 @@ class TclTk < Formula
   end
 
   resource "tcllib" do
-    url "https://github.com/tcltk/tcllib/archive/tcllib_1_16.tar.gz"
-    sha256 "f500a3ee2082e105693e775c8d94d9f3ab5ae687f706a7b0f6d89ec884332456"
+    url "https://github.com/tcltk/tcllib/archive/tcllib_1_17.tar.gz"
+    sha256 "45e5e2c5a60fc590c2c77b3a793846bbf62385a9706aa68dec16f60d236d164f"
   end
 
   # sqlite won't compile on Tiger due to missing function;
