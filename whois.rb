@@ -1,8 +1,8 @@
 class Whois < Formula
   homepage "https://packages.debian.org/sid/whois"
-  url "https://mirrors.kernel.org/debian/pool/main/w/whois/whois_5.2.7.tar.xz"
-  mirror "https://mirrors.ocf.berkeley.edu/debian/pool/main/w/whois/whois_5.2.7.tar.xz"
-  sha256 "c5536161a26c28ea0de03fafc065b5ce1b272a8ad2b44bf5784e7e802e61f239"
+  url "https://mirrors.kernel.org/debian/pool/main/w/whois/whois_5.2.8.tar.xz"
+  mirror "https://mirrors.ocf.berkeley.edu/debian/pool/main/w/whois/whois_5.2.8.tar.xz"
+  sha256 "f053ebe766f7a6f42859e6a4abd3f18741f9788aaeb1b129c3c8de95085635da"
   head "https://github.com/rfc1036/whois.git"
 
   bottle do
