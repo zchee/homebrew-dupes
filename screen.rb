@@ -13,6 +13,13 @@ class Screen < Formula
       sha1 "93d611f1f46c7bbca5f9575304913bd1c38e183b"
     end
   end
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    sha256 "d850e98c529e699c49c8deab4c4c6bb0f73ba97c3044c1550973b3e3a5852178" => :yosemite
+    sha256 "5828ab7fb89e968e32d9f5dfff13e9251f76e0de37649d805333147f5464c997" => :mavericks
+    sha256 "f906e224f750ba29081f6a9e9c65a0cc6263b5550173e689ad655bd6f9bf5927" => :mountain_lion
+  end
+
 
   head do
     url "git://git.savannah.gnu.org/screen.git"
