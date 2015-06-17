@@ -14,9 +14,11 @@ class Openssh < Formula
   end
 
   option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent"
+  option "with-libressl", "Build with LibreSSL instead of OpenSSL"
 
   depends_on "autoconf" => :build if build.with? "keychain-support"
-  depends_on "openssl"
+  depends_on "openssl" => :recommended
+  depends_on "libressl" => :optional
   depends_on "ldns" => :optional
   depends_on "pkg-config" => :build if build.with? "ldns"
 
@@ -54,8 +56,13 @@ class Openssh < Formula
       --with-kerberos5
       --prefix=#{prefix}
       --sysconfdir=#{etc}/ssh
-      --with-ssl-dir=#{Formula["openssl"].opt_prefix}
     ]
+
+    if build.with? "libressl"
+      args << "--with-ssl-dir=#{Formula["libressl"].opt_prefix}"
+    else
+      args << "--with-ssl-dir=#{Formula["openssl"].opt_prefix}"
+    end
 
     args << "--with-ldns" if build.with? "ldns"
 
