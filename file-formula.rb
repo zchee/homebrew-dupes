@@ -8,10 +8,10 @@ class FileFormula < Formula
   head "https://github.com/file/file.git"
 
   bottle do
-    root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
-    sha1 "82f413eec4ac2c36ea77028b5d0c615bdbb9886c" => :yosemite
-    sha1 "58d0aba801d97081ee9c55d37026658186eaeee0" => :mavericks
-    sha1 "695ef766c516ce3b122e0a8b3975bb122094a93a" => :mountain_lion
+    root_url "https://homebrew.bintray.com/bottles-dupes"
+    sha256 "61994eeea1f7494b78cf881e59da8276b3b877377fd4e5cf95c70735f75324f3" => :yosemite
+    sha256 "c765decba29c0d6cd521f2c3b6a59b9a8cb40570c1483d85809b76c97f836932" => :mavericks
+    sha256 "d53e302ee2082cbd593d1da045723b3db0e171947c1a61c9112e66aced61e2c2" => :mountain_lion
   end
 
   keg_only :provided_by_osx
