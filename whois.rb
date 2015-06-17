@@ -9,9 +9,9 @@ class Whois < Formula
   bottle do
     root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
-    sha256 "b402d57c730b0cd1b89feef657e743e439d9953bfc3034b5406be6b1a3de26e7" => :yosemite
-    sha256 "a3e411c6ac489f265e259bcdc0a8c3453f7f8b7ce879ace1a15219f210d73a48" => :mavericks
-    sha256 "4d7ae1143cc46ad0110658a2e9e5fa9d449913c7a5f39a1a526f69f4e59450e8" => :mountain_lion
+    sha256 "0cecc8a12250f3f4191d7165900c462ec9b45ec7d0c642750a346c184aede3e4" => :yosemite
+    sha256 "fa889a2636074009c92049ceeacdaa4412b24f6d5b9f47ca07d769b48fa8a027" => :mavericks
+    sha256 "c72b46d290bc3ea83976445af7525d2c0fe845127df06186643c918ab14f2d31" => :mountain_lion
   end
 
   def install
