@@ -6,10 +6,9 @@ class Openldap < Formula
   sha256 "27856bb4a8b44feca2b326c309000e16a9dadd52362c8ab6eec6c67a43737f6e"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
-    sha256 "de52a960935389bd7f4e4c17f782b58fd858eff58df846318cb7807995b4b584" => :yosemite
-    sha256 "b5bc20d247fcfeba62dffa1a9519891a2cf68b93932338cdf75a63b2609494f1" => :mavericks
-    sha256 "2fca33328cf2f9ef1abb70414265bb00cb31f3f81d742c6d5606720b487da5f7" => :mountain_lion
+    sha256 "eca10b85f3e58fa93dbd8893395fcea91e73eb1778f5d478e7d11d4238b723f6" => :yosemite
+    sha256 "f3ce96592df9560e6be00fb9ff8735000622ed4d25078183d12d0765b7d266bf" => :mavericks
+    sha256 "09a80c94749de9223f6b924a8a61f4a2269d117b5337a0f811faf3ecf292d5a6" => :mountain_lion
   end
 
   option "with-memberof", "Include memberof overlay"
