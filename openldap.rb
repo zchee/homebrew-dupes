@@ -1,8 +1,9 @@
 class Openldap < Formula
+  desc "Open source suite of directory software"
   homepage "http://www.openldap.org/software/"
-  url "ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.40.tgz"
-  mirror "http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.40.tgz"
-  sha256 "d12611a5c25b6499293c2bb7b435dc2b174db73e83f5a8cb7e34f2ce5fa6dadb"
+  url "ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.41.tgz"
+  mirror "http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.41.tgz"
+  sha256 "27856bb4a8b44feca2b326c309000e16a9dadd52362c8ab6eec6c67a43737f6e"
 
   bottle do
     root_url "https://homebrew.bintray.com/bottles-dupes"
@@ -11,12 +12,12 @@ class Openldap < Formula
     sha256 "2fca33328cf2f9ef1abb70414265bb00cb31f3f81d742c6d5606720b487da5f7" => :mountain_lion
   end
 
-  depends_on "berkeley-db" => :optional
-  depends_on "openssl"
-
   option "with-memberof", "Include memberof overlay"
   option "with-unique", "Include unique overlay"
   option "with-sssvlv", "Enable server side sorting and virtual list view"
+
+  depends_on "berkeley-db" => :optional
+  depends_on "openssl"
 
   def install
     args = %W[
