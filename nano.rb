@@ -5,11 +5,10 @@ class Nano < Formula
   sha256 "c8cd7f18fcf5696d9df3364ee2a840e0ab7b6bdbd22abf850bbdc951db7f65b9"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
-    sha256 "c0c8f2d22095fb8e0ee2ed7304a0c9c3218361d7ac5e89438dc824f9e8b03dd7" => :yosemite
-    sha256 "1f7eeb6de531029a388ce39b0caf4a220e97d24557ed2a9dd3b990714ad8ee72" => :mavericks
-    sha256 "7ff1b6fd739a14179e3bd7ce85527f333cbbee9a25615ee7185bcc7f8da363e0" => :mountain_lion
+    sha256 "010966def823ea6dc03295f7837223b4b5e8c452d2bed239a2dd3713a2f7b600" => :yosemite
+    sha256 "4e4825037227279cc22e29599b3117bdebeea6fe187defac2f0d8bed602bb08d" => :mavericks
+    sha256 "3c3cb8348b0049ea8472bd41b556188abfff63859fc0cd7b32a96e71887ecd20" => :mountain_lion
   end
 
   head do
