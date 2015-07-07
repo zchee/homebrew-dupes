@@ -6,10 +6,9 @@ class Openssh < Formula
   sha256 "6e074df538f357d440be6cf93dc581a21f22d39e236f217fcd8eacbb6c896cfe"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
-    sha256 "d8b11af1030a8b73240b1b780971cdc8e2e14d29d91744e6c2d17a726e1b81bf" => :yosemite
-    sha256 "75a3448223d8e63e24a3755091a46151070ff93c7c89a7c3b4aaa1287a8bbcad" => :mavericks
-    sha256 "0112148ed980edb2288e4ef4a07952c7203d452d3b4858d13f11f2815c115e84" => :mountain_lion
+    sha256 "fa65b9cc13811547bc9b5a44e27b66d756a9c5ae5ef390bb8a028804f177733a" => :yosemite
+    sha256 "c66c391b706da983940b03f3bbae049f31e92557938c9eab27dbc183d47f89ee" => :mavericks
+    sha256 "2a56fb8a854e16280d1da335bfb0c4306659a46b11748f73b6a7e30cb13822e4" => :mountain_lion
   end
 
   # Please don't resubmit the keychain patch option. It will never be accepted.
