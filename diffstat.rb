@@ -5,7 +5,6 @@ class Diffstat < Formula
   sha256 "267d1441b8889cbefbb7ca7dfd4a17f6c8bc73bc114904c74ecad945a3dbf270"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
     sha256 "30e038e6f68b2fb44f0e629d306adde9f8eb38bdb78bf8a8f5f69ba15cb0aefd" => :yosemite
     sha256 "8784f071d32a78b18ccdbe00e4ad5a3909559e8896b9de4e78bccdad67b5a1e8" => :mavericks

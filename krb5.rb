@@ -4,7 +4,6 @@ class Krb5 < Formula
   sha256 "dc8f79ae9ab777d0f815e84ed02ac4ccfe3d5826eb4947a195dfce9fd95a9582"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     sha256 "6d0e91f4f9f4ad6c7807f8164c81f379cf89a1003fc1ac6c1c50b20924cd5e54" => :yosemite
     sha256 "ceb7523bd7d3934ccb6413a65797ee02c6b84a9528dfa9fe0eddfe60febc13b7" => :mavericks
     sha256 "707a3162f197c2343645b85699567815d6957385af258344c235e8c5d0a31f4e" => :mountain_lion

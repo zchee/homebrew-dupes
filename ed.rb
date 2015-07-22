@@ -5,7 +5,6 @@ class Ed < Formula
   sha256 "bd146ede5f225e20946ad94ef6bdf07939313bcc41dde5d2beedcea1a147a134"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
     sha256 "920dbc17341d294763705acfb77279d81c36d6264417356b0a3ead9c0b230254" => :yosemite
     sha256 "65abafbca71eea0d0ca13e39deb2f9ee81b8330efe28c7184a833efc0838da07" => :mavericks

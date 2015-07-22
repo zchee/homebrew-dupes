@@ -1,5 +1,3 @@
-require "formula"
-
 class Make < Formula
   homepage "https://www.gnu.org/software/make/"
   url "http://ftpmirror.gnu.org/make/make-4.1.tar.bz2"
@@ -7,7 +5,6 @@ class Make < Formula
   sha1 "0d701882fd6fd61a9652cb8d866ad7fc7de54d58"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     revision 1
     sha256 "9efa34626066c502083ecb7ddbf033a2a2e118ad807c1ba020bc108169c6e5cb" => :yosemite
     sha256 "0acd403c6ecfc5a3f4fe74f1a76898bb15101871891ee8112e2edcf35c3a4ae0" => :mavericks

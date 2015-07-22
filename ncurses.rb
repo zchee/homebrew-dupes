@@ -1,11 +1,10 @@
 class Ncurses < Formula
-  homepage 'https://www.gnu.org/s/ncurses/'
-  url 'http://ftpmirror.gnu.org/ncurses/ncurses-5.9.tar.gz'
-  mirror 'https://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz'
-  sha1 '3e042e5f2c7223bffdaac9646a533b8c758b65b5'
+  homepage "https://www.gnu.org/s/ncurses/"
+  url "http://ftpmirror.gnu.org/ncurses/ncurses-5.9.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz"
+  sha1 "3e042e5f2c7223bffdaac9646a533b8c758b65b5"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     sha256 "1cbfe34e03d1005cd7ebf69250b3427b25969c4b7b3a81bd72e0a768d8f6a98b" => :yosemite
     sha256 "3f0b3398050ce5efb40adad245b868233f140f7365c7e4cc2a02ddf276066fe6" => :mavericks
     sha256 "66f88fb4d3930ebbd94b064e65dc22929c11bb49f215d8c84df7af733bd86e16" => :mountain_lion
@@ -35,7 +34,7 @@ class Ncurses < Formula
     # Disable linemarker output of cpp
     ENV.append "CPPFLAGS", "-P"
 
-    ENV['PKG_CONFIG_LIBDIR'] = "#{lib}/pkgconfig"
+    ENV["PKG_CONFIG_LIBDIR"] = "#{lib}/pkgconfig"
     (lib/"pkgconfig").mkpath
 
     system "./configure", "--prefix=#{prefix}",
@@ -56,7 +55,7 @@ class Ncurses < Formula
     major = version.to_s.split(".")[0]
 
     cd lib do
-      %w{form menu ncurses panel}.each do |name|
+      %w[form menu ncurses panel].each do |name|
         if OS.mac?
           ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.dylib"
           ln_s "lib#{name}w.#{major}.dylib", "lib#{name}.#{major}.dylib"

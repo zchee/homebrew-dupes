@@ -5,7 +5,6 @@ class TclTk < Formula
   sha256 "9e6ed94c981c1d0c5f5fefb8112d06c6bf4d050a7327e95e71d417c416519c8d"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     revision 1
     sha256 "67e333aa50b44e7b73d04483a03effb8704c8193be629104b64b10c064f9e36f" => :yosemite
     sha256 "3e0bf324de3720eff78fd2e06e3a6037c73fe77575c53cd7a3ad28f147857be9" => :mavericks

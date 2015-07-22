@@ -8,7 +8,6 @@ class FileFormula < Formula
   head "https://github.com/file/file.git"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     sha256 "61994eeea1f7494b78cf881e59da8276b3b877377fd4e5cf95c70735f75324f3" => :yosemite
     sha256 "c765decba29c0d6cd521f2c3b6a59b9a8cb40570c1483d85809b76c97f836932" => :mavericks
     sha256 "d53e302ee2082cbd593d1da045723b3db0e171947c1a61c9112e66aced61e2c2" => :mountain_lion

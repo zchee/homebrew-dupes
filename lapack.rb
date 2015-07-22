@@ -4,7 +4,6 @@ class Lapack < Formula
   sha1 "5870081889bf5d15fd977993daab29cf3c5ea970"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
     sha256 "b492305db3e74f7fde1d1798fbbb653c9caea0f7436e8bda5af2c19677909fc0" => :yosemite
     sha256 "c099b310cbe3217266a9316cff77471c1c72ad0203def9776c851609e38ea789" => :mavericks

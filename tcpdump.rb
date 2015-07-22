@@ -6,7 +6,6 @@ class Tcpdump < Formula
   head "https://github.com/the-tcpdump-group/tcpdump.git"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
     sha256 "7512e22e9879515f92613f03ffb7fd0f81803bff91ab3baf21adeb48f1425574" => :yosemite
     sha256 "24e411be0b985c24f5d0acabe92962ccdd417a14bb8cc978b708052579093dce" => :mavericks

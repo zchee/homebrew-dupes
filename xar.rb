@@ -4,7 +4,6 @@ class Xar < Formula
   sha256 "4c5d5682803cdfab16d72365cf51fc4075d597c5eeaa8c7d1990fea98cdae3e6"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
     sha256 "bbfa085a98db775ad409b2c269d243cbb72b174217548032e8574815409787d2" => :yosemite
     sha256 "c8365275e6eca371ae338b192ec5d281ebb95ba93c4a7d92ee34044951ac3c23" => :mavericks

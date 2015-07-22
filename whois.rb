@@ -7,7 +7,6 @@ class Whois < Formula
   head "https://github.com/rfc1036/whois.git"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-dupes"
     cellar :any
     sha256 "0cecc8a12250f3f4191d7165900c462ec9b45ec7d0c642750a346c184aede3e4" => :yosemite
     sha256 "fa889a2636074009c92049ceeacdaa4412b24f6d5b9f47ca07d769b48fa8a027" => :mavericks
