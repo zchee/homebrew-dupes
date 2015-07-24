@@ -5,7 +5,6 @@ class Bzip2 < Formula
   revision 1
 
   bottle do
-    root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
     sha1 "1ea6b36d9ebfa233d6df6e4db5456c475f0e28ec" => :yosemite
     sha1 "2b1929e2d5f732f37195527e21efdc3bae6097fb" => :mavericks
     sha1 "700e622444ffae3796ed14fd83fcb93923529152" => :mountain_lion

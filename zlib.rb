@@ -7,7 +7,6 @@ class Zlib < Formula
   sha1 'a4d316c404ff54ca545ea71a27af7dbc29817088'
 
   bottle do
-    root_url "https://downloads.sf.net/project/machomebrew/Bottles/dupes"
     cellar :any
     sha1 "8111b1453b1ac71c0249f2e3abe2ce16372509af" => :yosemite
     sha1 "4902071981b276d201681dc4321534f94d3f32c5" => :mavericks
