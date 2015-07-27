@@ -17,7 +17,7 @@ class Openldap < Formula
   option "with-unique", "Include unique overlay"
   option "with-sssvlv", "Enable server side sorting and virtual list view"
 
-  depends_on "berkeley-db" => :optional
+  depends_on "berkeley-db4" => :optional
   depends_on "openssl"
 
   keg_only :provided_by_osx
