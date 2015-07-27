@@ -1,8 +1,9 @@
 class Rsync < Formula
+  desc "Utility that provides fast incremental file transfer"
   homepage "https://rsync.samba.org/"
   url "https://rsync.samba.org/ftp/rsync/rsync-3.1.1.tar.gz"
   mirror "https://mirrors.kernel.org/debian/pool/main/r/rsync/rsync_3.1.1.orig.tar.gz"
-  sha1 "c84faba04f721d393feccfa0476bfeed9b5b5250"
+  sha256 "7de4364fcf5fe42f3bdb514417f1c40d10bbca896abe7e7f2c581c6ea08a2621"
 
   bottle do
     cellar :any
@@ -16,17 +17,17 @@ class Rsync < Formula
   if OS.mac?
     patch do
       url "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-fileflags.diff"
-      sha1 "4ecd6496642800d5da7931796eb56a92ca233671"
+      sha256 "b50f0ad6d2c20e561e17b64f07545b1ecfe7d61481a6e5af192abfe21af01e73"
     end
 
     patch do
       url "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-crtimes.diff"
-      sha1 "cf07fd4bdf09744f16dfd8f605f5f849a651f641"
+      sha256 "396e552b1f51ee10c21f27afc73b75b2d421272443d15d2a5539ac641c32cbb1"
     end
 
     patch do
       url "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-hfs-compression.diff"
-      sha1 "6dd10b8e3f8067930cd8405982d20421222fa680"
+      sha256 "134483ab33fdaa67d503dc4011656913321f9e405639fab96d48ef54e08dfa1f"
     end
   end
 
