@@ -7,9 +7,10 @@ class Gzip < Formula
 
   bottle do
     cellar :any
-    sha1 "80aff7ae695f8f7ed1b4a7a68566cd7e0fac6fa4" => :yosemite
-    sha1 "d5d9891b8f1afea7c3d5288314f5bc3f6cb2a0af" => :mavericks
-    sha1 "6c75eee3fb519f841177abae22bb4a3e30d237c9" => :mountain_lion
+    revision 1
+    sha256 "4f4a5361da0eb9b1f8769e9da586cb21f8b261bbd814afa00773d98c864c4797" => :yosemite
+    sha256 "f899ced33032b5fd323c0bc592345f7f2f02dedaadc5a0061b10e8780f1797da" => :mavericks
+    sha256 "605ab80dff19ad7dad9e95af772ffe45d5968738d5dbcece62be244acb789137" => :mountain_lion
   end
 
   # Add support for --rsyncable option
