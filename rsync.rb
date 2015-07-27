@@ -7,9 +7,10 @@ class Rsync < Formula
 
   bottle do
     cellar :any
-    sha1 "cf5893932a9dbe9b2b48940f1842143e0580d4b3" => :yosemite
-    sha1 "c1981da705dd7ab4ebd4cfb31646b1f7dbe7a771" => :mavericks
-    sha1 "39f694183b78f127511a011bc5bd6becff2d9993" => :mountain_lion
+    revision 1
+    sha256 "164e7c934b2de1b49b1885e96903386ea808cb552a3c9dd9e585f7b98ae865cd" => :yosemite
+    sha256 "96ee2027bfe92f0b5d3f5812eb8b23a46141134ad8308acda9856a591a9ca807" => :mavericks
+    sha256 "3d8b560ebbb6474976804f229ac4861a18aca29ce8541bcb65807096127a3e5f" => :mountain_lion
   end
 
   depends_on "autoconf" => :build
