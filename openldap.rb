@@ -4,6 +4,7 @@ class Openldap < Formula
   url "ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.41.tgz"
   mirror "http://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.41.tgz"
   sha256 "27856bb4a8b44feca2b326c309000e16a9dadd52362c8ab6eec6c67a43737f6e"
+  revision 1
 
   bottle do
     sha256 "eca10b85f3e58fa93dbd8893395fcea91e73eb1778f5d478e7d11d4238b723f6" => :yosemite
@@ -17,6 +18,8 @@ class Openldap < Formula
 
   depends_on "berkeley-db" => :optional
   depends_on "openssl"
+
+  keg_only :provided_by_osx
 
   def install
     args = %W[
