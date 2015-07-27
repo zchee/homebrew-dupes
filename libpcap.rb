@@ -1,10 +1,8 @@
-require "formula"
-
 class Libpcap < Formula
+  desc "Portable library for network traffic capture"
   homepage "http://www.tcpdump.org/"
-  url "http://www.tcpdump.org/release/libpcap-1.6.2.tar.gz"
-  sha1 "7efc7d56f4959de8bb33a92de2e15d92105eac32"
-  revision 1
+  url "http://www.tcpdump.org/release/libpcap-1.7.4.tar.gz"
+  sha256 "7ad3112187e88328b85e46dce7a9b949632af18ee74d97ffc3f2b41fe7f448b0"
 
   keg_only :provided_by_osx
 
@@ -15,5 +13,9 @@ class Libpcap < Formula
                           "--enable-ipv6",
                           "--disable-universal"
     system "make", "install"
+  end
+
+  test do
+    assert_match /lpcap/, shell_output("#{bin}/pcap-config --libs")
   end
 end
