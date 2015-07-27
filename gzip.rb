@@ -1,9 +1,9 @@
 class Gzip < Formula
+  desc "Popular GNU data compression program"
   homepage "https://www.gnu.org/software/gzip"
   url "http://ftpmirror.gnu.org/gzip/gzip-1.6.tar.gz"
   mirror "https://ftp.gnu.org/gnu/gzip/gzip-1.6.tar.gz"
-  mirror "http://mirror.clarkson.edu/gnu/gzip/gzip-1.6.tar.gz"
-  sha1 "7ec6403090b3eaeb53ef017223cb8034eebc1f49"
+  sha256 "97eb83b763d9e5ad35f351fe5517e6b71521d7aac7acf3e3cacdb6b1496d8f7e"
 
   bottle do
     cellar :any
@@ -14,8 +14,8 @@ class Gzip < Formula
 
   # Add support for --rsyncable option
   patch do
-    url "http://cvs.pld-linux.org/cgi-bin/viewvc.cgi/cvs/packages/gzip/gzip-rsyncable.patch?revision=1.4&view=co"
-    sha1 "e59c60fcb8a70a8ef2884a624e439b0b6d9b5ace"
+    url "https://cvs.pld-linux.org/cgi-bin/viewvc.cgi/cvs/packages/gzip/gzip-rsyncable.patch?revision=1.4&view=co"
+    sha256 "c9024df8719d42b0b0f133f829865ccab2d5b58a0b5847a9425314d03fa8c9b6"
   end
 
   def install
