@@ -6,9 +6,10 @@ class Bzip2 < Formula
   revision 1
 
   bottle do
-    sha1 "1ea6b36d9ebfa233d6df6e4db5456c475f0e28ec" => :yosemite
-    sha1 "2b1929e2d5f732f37195527e21efdc3bae6097fb" => :mavericks
-    sha1 "700e622444ffae3796ed14fd83fcb93923529152" => :mountain_lion
+    revision 1
+    sha256 "ceb1aab63302975659889ec645a55aaf4a60d93f296765eba2066c15c80ecb03" => :yosemite
+    sha256 "e8e0614bfb9f2db7d42d3d7111e5d0f92ab4694a6a1717b1596a46ef5daf19cf" => :mavericks
+    sha256 "524193536215c58e833703505bad765ce3a29388cec34c29c611f800a53f0874" => :mountain_lion
   end
 
   keg_only :provided_by_osx
