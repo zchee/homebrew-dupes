@@ -31,7 +31,7 @@ class TclTk < Formula
 
   resource "tcllib" do
     url "https://github.com/tcltk/tcllib/archive/tcllib_1_17.tar.gz"
-    sha256 "45e5e2c5a60fc590c2c77b3a793846bbf62385a9706aa68dec16f60d236d164f"
+    sha256 "1653165693125e86e8b77929c22210fb50a9b46271c321ac292cd5497cdde2d2"
   end
 
   # sqlite won't compile on Tiger due to missing function;
@@ -79,7 +79,8 @@ class TclTk < Formula
 
     if build.with? "tcllib"
       resource("tcllib").stage do
-        system "./configure", "--prefix=#{prefix}"
+        system "./configure", "--prefix=#{prefix}",
+                              "--mandir=#{man}"
         system "make", "install"
       end
     end
