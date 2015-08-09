@@ -1,8 +1,8 @@
 class Libiconv < Formula
-  homepage 'https://www.gnu.org/software/libiconv/'
-  url 'http://ftpmirror.gnu.org/libiconv/libiconv-1.14.tar.gz'
-  mirror 'https://ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz'
-  sha1 'be7d67e50d72ff067b2c0291311bc283add36965'
+  homepage "https://www.gnu.org/software/libiconv/"
+  url "http://ftpmirror.gnu.org/libiconv/libiconv-1.14.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz"
+  sha256 "72b24ded17d687193c3366d0ebe7cde1e6b18f0df8c55438ac95be39e8a30613"
 
   keg_only :provided_by_osx
 
@@ -10,12 +10,12 @@ class Libiconv < Formula
 
   patch do
     url "https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-Makefile.devel"
-    sha1 "44b0cd68279dafc584faa24c9b301186330542ae"
+    sha256 "ad9b6da1a82fc4de27d6f7086a3382993a0b16153bc8e8a23d7b5f9334ca0a42"
   end
 
   patch do
     url "https://trac.macports.org/export/89276/trunk/dports/textproc/libiconv/files/patch-utf8mac.diff"
-    sha1 "b47d62b5e516291fd87fd758181eeda4c786c8de"
+    sha256 "e8128732f22f63b5c656659786d2cf76f1450008f36bcf541285268c66cabeab"
   end
   patch :DATA
 
@@ -27,7 +27,7 @@ class Libiconv < Formula
                           "--prefix=#{prefix}",
                           "--enable-extra-encodings"
     system "make", "-f", "Makefile.devel", "CFLAGS=#{ENV.cflags}", "CC=#{ENV.cc}"
-    system "make install"
+    system "make", "install"
   end
 end
 

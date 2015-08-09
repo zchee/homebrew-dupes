@@ -1,12 +1,12 @@
 class Groff < Formula
-  homepage 'https://www.gnu.org/software/groff/'
-  url 'http://ftpmirror.gnu.org/groff/groff-1.22.3.tar.gz'
-  mirror 'https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz'
-  sha1 '61a6808ea1ef715df9fa8e9b424e1f6b9fa8c091'
+  homepage "https://www.gnu.org/software/groff/"
+  url "http://ftpmirror.gnu.org/groff/groff-1.22.3.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/groff/groff-1.22.3.tar.gz"
+  sha256 "3a48a9d6c97750bfbd535feeb5be0111db6406ddb7bb79fc680809cda6d828a5"
 
-  option 'with-gropdf', 'Enable PDF output support'
-  option 'with-grohtml', 'Enable HTML output support (implies --with-gropdf)'
-  option 'with-gpresent', 'Install macros for the presentations document format'
+  option "with-gropdf", "Enable PDF output support"
+  option "with-grohtml", "Enable HTML output support (implies --with-gropdf)"
+  option "with-gpresent", "Install macros for the presentations document format"
 
   if build.with? "grohtml"
     depends_on "ghostscript"
@@ -16,9 +16,9 @@ class Groff < Formula
     depends_on "ghostscript"
   end
 
-  resource 'gpresent' do
-    url 'https://staff.fnwi.uva.nl/b.diertens/useful/gpresent/gpresent-2.3.tar.gz'
-    sha1 '7d38165ad87ce418458275d0c04388dd0c651431'
+  resource "gpresent" do
+    url "https://staff.fnwi.uva.nl/b.diertens/useful/gpresent/gpresent-2.3.tar.gz"
+    sha256 "a76b9b939f8107d53d7a3c9c1f403a3af23868c1e6b2e609ef70b30d12d70c51"
   end
 
   patch :DATA # fix parallel build, https://savannah.gnu.org/bugs/index.php?43581
@@ -26,15 +26,15 @@ class Groff < Formula
   def install
     system "./configure", "--prefix=#{prefix}", "--without-x"
     system "make" # Separate steps required
-    system "make install"
+    system "make", "install"
 
-    if build.with? 'gpresent'
-      resource('gpresent').stage do
-        (share/'groff/site-tmac').install Dir['*.tmac']
-        (share/'groff/examples').install Dir['*.rof', '*.pdf']
-        man7.install Dir['*.7']
-        man1.install Dir['*.1']
-        bin.install 'presentps'
+    if build.with? "gpresent"
+      resource("gpresent").stage do
+        (share/"groff/site-tmac").install Dir["*.tmac"]
+        (share/"groff/examples").install Dir["*.rof", "*.pdf"]
+        man7.install Dir["*.7"]
+        man1.install Dir["*.1"]
+        bin.install "presentps"
       end
     end
   end

@@ -1,7 +1,7 @@
 class Lapack < Formula
   homepage "http://www.netlib.org/lapack/"
   url "http://www.netlib.org/lapack/lapack-3.5.0.tgz"
-  sha1 "5870081889bf5d15fd977993daab29cf3c5ea970"
+  sha256 "9ad8f0d3f3fb5521db49f2dd716463b8fb2b6bc9dc386a9956b8c6144f726352"
 
   bottle do
     cellar :any
@@ -13,7 +13,7 @@ class Lapack < Formula
   resource "manpages" do
     url "http://netlib.org/lapack/manpages.tgz"
     version "3.5.0"
-    sha1 "fb5829fca324f7a2053409b370d58e60f3aa4e6e"
+    sha256 "055da7402ea807cc16f6c50b71ac63d290f83a5f2885aa9f679b7ad11dd8903d"
   end
 
   depends_on :fortran

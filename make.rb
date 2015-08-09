@@ -2,7 +2,7 @@ class Make < Formula
   homepage "https://www.gnu.org/software/make/"
   url "http://ftpmirror.gnu.org/make/make-4.1.tar.bz2"
   mirror "https://ftp.gnu.org/gnu/make/make-4.1.tar.bz2"
-  sha1 "0d701882fd6fd61a9652cb8d866ad7fc7de54d58"
+  sha256 "0bc7613389650ee6a24554b52572a272f7356164fd2c4132b0bcf13123e4fca5"
 
   bottle do
     revision 1
