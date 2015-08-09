@@ -1,8 +1,9 @@
 class Ncurses < Formula
+  desc "Text-based UI library"
   homepage "https://www.gnu.org/s/ncurses/"
-  url "http://ftpmirror.gnu.org/ncurses/ncurses-5.9.tar.gz"
-  mirror "https://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz"
-  sha1 "3e042e5f2c7223bffdaac9646a533b8c758b65b5"
+  url "http://ftpmirror.gnu.org/ncurses/ncurses-6.0.tar.gz"
+  mirror "https://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+  sha256 "f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260"
 
   bottle do
     sha256 "1cbfe34e03d1005cd7ebf69250b3427b25969c4b7b3a81bd72e0a768d8f6a98b" => :yosemite
@@ -13,16 +14,6 @@ class Ncurses < Formula
   keg_only :provided_by_osx
 
   option :universal
-
-  # Fix building C++ bindings with clang
-  patch :p0 do
-    url "https://trac.macports.org/export/103963/trunk/dports/devel/ncurses/files/constructor_types.diff"
-    sha1 "60f3e64c7793381307e2a3849df7ae282e46c36e"
-  end
-
-  # Stop using obsolete -no-cpp-precomp flag, which breaks FSF GCC
-  # Reported upstream by email
-  patch :DATA
 
   def install
     ENV.universal_binary if build.universal?
@@ -45,10 +36,11 @@ class Ncurses < Formula
                           "--mandir=#{man}",
                           "--with-manpage-format=normal",
                           "--with-shared"
-
-    system "make"
-    system "make install"
+    system "make", "install"
     make_libncurses_symlinks
+
+    prefix.install "test"
+    (prefix/"test").install "install-sh", "config.sub", "config.guess"
   end
 
   def make_libncurses_symlinks
@@ -84,31 +76,18 @@ class Ncurses < Formula
       "ncursesw/curses.h", "ncursesw/form.h", "ncursesw/ncurses.h",
       "ncursesw/term.h", "ncursesw/termcap.h"], include
   end
+
+  test do
+    ENV["TERM"] = "xterm"
+    system bin/"tput", "cols"
+
+    cd prefix/"test" do
+      system "./configure", "--prefix=#{testpath}/test",
+                            "--with-curses-dir=#{prefix}"
+      system "make", "install"
+    end
+    system testpath/"test/bin/keynames"
+    system testpath/"test/bin/test_arrays"
+    system testpath/"test/bin/test_vidputs"
+  end
 end
-
-__END__
-diff --git a/Ada95/configure b/Ada95/configure
-index 4db6f1f..e82bb4b 100755
---- a/Ada95/configure
-+++ b/Ada95/configure
-@@ -7460,7 +7460,6 @@ CF_EOF
- 		chmod +x mk_shared_lib.sh
- 		;;
- 	darwin*) #(vi
--		EXTRA_CFLAGS="-no-cpp-precomp"
- 		CC_SHARED_OPTS="-dynamic"
- 		MK_SHARED_LIB='${CC} ${CFLAGS} -dynamiclib -install_name ${libdir}/`basename $@` -compatibility_version ${ABI_VERSION} -current_version ${ABI_VERSION} -o $@'
- 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=abi
-diff --git a/configure b/configure
-index 639b790..25d69b3 100755
---- a/configure
-+++ b/configure
-@@ -5584,7 +5584,6 @@ CF_EOF
- 		chmod +x mk_shared_lib.sh
- 		;;
- 	darwin*) #(vi
--		EXTRA_CFLAGS="-no-cpp-precomp"
- 		CC_SHARED_OPTS="-dynamic"
- 		MK_SHARED_LIB='${CC} ${CFLAGS} -dynamiclib -install_name ${libdir}/`basename $@` -compatibility_version ${ABI_VERSION} -current_version ${ABI_VERSION} -o $@'
- 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=abi
-

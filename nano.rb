@@ -3,6 +3,7 @@ class Nano < Formula
   homepage "http://www.nano-editor.org/"
   url "http://www.nano-editor.org/dist/v2.4/nano-2.4.2.tar.gz"
   sha256 "c8cd7f18fcf5696d9df3364ee2a840e0ab7b6bdbd22abf850bbdc951db7f65b9"
+  revision 1
 
   bottle do
     cellar :any
