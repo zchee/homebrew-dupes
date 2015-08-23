@@ -1,8 +1,8 @@
 class Diffstat < Formula
   homepage "http://invisible-island.net/diffstat/"
-  url "https://mirrors.kernel.org/debian/pool/main/d/diffstat/diffstat_1.59.orig.tar.gz"
-  mirror "https://mirrors.ocf.berkeley.edu/debian/pool/main/d/diffstat/diffstat_1.59.orig.tar.gz"
-  sha256 "267d1441b8889cbefbb7ca7dfd4a17f6c8bc73bc114904c74ecad945a3dbf270"
+  url "https://mirrors.kernel.org/debian/pool/main/d/diffstat/diffstat_1.60.orig.tar.gz"
+  mirror "https://mirrors.ocf.berkeley.edu/debian/pool/main/d/diffstat/diffstat_1.60.orig.tar.gz"
+  sha256 "2032e418b43bae70d548e32da901ebc4ac12972381de1314bebde0b126fb0123"
 
   bottle do
     cellar :any
