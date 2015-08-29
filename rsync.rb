@@ -17,17 +17,20 @@ class Rsync < Formula
 
   if OS.mac?
     patch do
-      url "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-fileflags.diff"
+      url "https://raw.githubusercontent.com/DomT4/scripts/d47dd65dbae/Homebrew_Resources/MacPorts_Import/rsync/r127713/patch-fileflags.diff"
+      mirror "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-fileflags.diff"
       sha256 "b50f0ad6d2c20e561e17b64f07545b1ecfe7d61481a6e5af192abfe21af01e73"
     end
 
     patch do
-      url "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-crtimes.diff"
+      url "https://raw.githubusercontent.com/DomT4/scripts/d47dd65dbae/Homebrew_Resources/MacPorts_Import/rsync/r127713/patch-crtimes.diff"
+      mirror "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-crtimes.diff"
       sha256 "396e552b1f51ee10c21f27afc73b75b2d421272443d15d2a5539ac641c32cbb1"
     end
 
     patch do
-      url "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-hfs-compression.diff"
+      url "https://raw.githubusercontent.com/DomT4/scripts/d47dd65dbae/Homebrew_Resources/MacPorts_Import/rsync/r127713/patch-hfs-compression.diff"
+      mirror "https://trac.macports.org/export/127713/trunk/dports/net/rsync/files/patch-hfs-compression.diff"
       sha256 "134483ab33fdaa67d503dc4011656913321f9e405639fab96d48ef54e08dfa1f"
     end
   end
