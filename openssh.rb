@@ -21,17 +21,19 @@ class Openssh < Formula
   depends_on "ldns" => :optional
   depends_on "pkg-config" => :build if build.with? "ldns"
 
-  patch do
-    url "https://gist.githubusercontent.com/jacknagel/e4d68a979dca7f968bdb/raw/f07f00f9d5e4eafcba42cc0be44a47b6e1a8dd2a/sandbox.diff"
-    sha256 "82c287053eed12ce064f0b180eac2ae995a2b97c6cc38ad1bdd7626016204205"
-  end if OS.mac?
+  if OS.mac?
+    patch do
+      url "https://gist.githubusercontent.com/jacknagel/e4d68a979dca7f968bdb/raw/f07f00f9d5e4eafcba42cc0be44a47b6e1a8dd2a/sandbox.diff"
+      sha256 "82c287053eed12ce064f0b180eac2ae995a2b97c6cc38ad1bdd7626016204205"
+    end
 
-  # Patch for SSH tunnelling issues caused by launchd changes on Yosemite
-  patch do
-    url "https://raw.githubusercontent.com/DomT4/scripts/c24f29528/Homebrew_Resources/MacPorts_Import/OpenSSH/r138238/launchd.patch"
-    mirror "https://trac.macports.org/export/138238/trunk/dports/net/openssh/files/launchd.patch"
-    sha256 "012ee24bf0265dedd5bfd2745cf8262c3240a6d70edcd555e5b35f99ed070590"
-  end if OS.mac?
+    # Patch for SSH tunnelling issues caused by launchd changes on Yosemite
+    patch do
+      url "https://raw.githubusercontent.com/DomT4/scripts/c24f29528/Homebrew_Resources/MacPorts_Import/OpenSSH/r138238/launchd.patch"
+      mirror "https://trac.macports.org/export/138238/trunk/dports/net/openssh/files/launchd.patch"
+      sha256 "012ee24bf0265dedd5bfd2745cf8262c3240a6d70edcd555e5b35f99ed070590"
+    end
+  end
 
   def install
     ENV.append "CPPFLAGS", "-D__APPLE_SANDBOX_NAMED_EXTERNAL__" if OS.mac?
