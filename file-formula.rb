@@ -8,9 +8,9 @@ class FileFormula < Formula
   head "https://github.com/file/file.git"
 
   bottle do
-    sha256 "61994eeea1f7494b78cf881e59da8276b3b877377fd4e5cf95c70735f75324f3" => :yosemite
-    sha256 "c765decba29c0d6cd521f2c3b6a59b9a8cb40570c1483d85809b76c97f836932" => :mavericks
-    sha256 "d53e302ee2082cbd593d1da045723b3db0e171947c1a61c9112e66aced61e2c2" => :mountain_lion
+    sha256 "702c10419f6c4c577571e12e367e07c4bb66da0418c58567ca62b2c21b02661b" => :yosemite
+    sha256 "cba58564ef13d691cd4d9eb2e294fa0338b67ffe9d03c2d8a48f1d1d46397796" => :mavericks
+    sha256 "73a039c88c260f85af6922875dac83e203b416fdd79d14f35c1012757ccb2757" => :mountain_lion
   end
 
   keg_only :provided_by_osx
